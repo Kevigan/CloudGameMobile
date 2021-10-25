@@ -547,6 +547,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1188966109}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnClouds
+      objectReference: {fileID: 0}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelPart, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+      propertyPath: onAcitvateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7193180762076963136, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1542,7 +1570,7 @@ GameObject:
   - component: {fileID: 466516231}
   - component: {fileID: 466516232}
   m_Layer: 0
-  m_Name: Cloud Spawner
+  m_Name: LevelPart Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3441,6 +3469,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1515889502234405887, guid: 545b9ad14f1218f45afe27b3424bca26, type: 3}
   m_PrefabInstance: {fileID: 1881051491}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1188966109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 795477775, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
+  m_PrefabInstance: {fileID: 185553392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fbe834cb111ee4dba36dfe3e14cb2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196428225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,7 +3606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  addJumpForce: 0
+  addJumpForce: 3
   moveVertical: 0
   moveHorizontal: 0
   color: 0
@@ -3841,22 +3880,22 @@ MonoBehaviour:
   pools:
   - tag: RedCloud
     prefab: {fileID: 1515889502234405886, guid: 545b9ad14f1218f45afe27b3424bca26, type: 3}
-    size: 10
+    size: 50
   - tag: BlackCLoud
     prefab: {fileID: 773497581115277697, guid: b323572c20c23684faa3389a7b91effc, type: 3}
-    size: 10
+    size: 50
   - tag: BlueCloud
     prefab: {fileID: 7793960050294928586, guid: 6c5bbf87adb6808439ef274cb90251e8, type: 3}
-    size: 10
+    size: 50
   - tag: GreenCloud
     prefab: {fileID: 3001831844368748349, guid: 5761f2a5bdccc7a4eb9171d30ccd90df, type: 3}
-    size: 10
+    size: 50
   - tag: WhiteCloud
     prefab: {fileID: 243495665454684155, guid: 92f7b7ab818b31d42a3a2469c2dec126, type: 3}
-    size: 10
+    size: 50
   - tag: YellowCloud
     prefab: {fileID: 4678459385884877565, guid: 6a6a779675bfdcd418389b88161724b7, type: 3}
-    size: 10
+    size: 50
 --- !u!4 &1366628700
 Transform:
   m_ObjectHideFlags: 0

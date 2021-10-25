@@ -358,10 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54dd85e7ef9f80b458a63777bc624d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.75
   addJumpForce: 2
-  moveVertical: 0
-  moveHorizontal: 1
+  moveVertical: 1
+  moveHorizontal: 0
   color: 0
   jumpAmount: 55
   text: {fileID: 1515889502311285629}

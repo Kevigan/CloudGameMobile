@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 //using System;
 
 public class LevelPartSpawner : MonoBehaviour
 {
+    public delegate void OnSpanwLevelPart();
+    public static event OnSpanwLevelPart onSpawnClouds;
+
+
     private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 10f;
 
     [SerializeField] private PlayerCharacter2D player;
@@ -20,10 +25,9 @@ public class LevelPartSpawner : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART)
         {
-            // SpawnLevelPart();
-            // Debug.Log(tag.ToString());
             string tag = "a";
             GameObject newLevelPart = LevelPartPooler.Instance.SpawnFromPool(tag, lastEndPosition, Quaternion.identity);
+            //onSpawnClouds.Invoke();
             lastEndPosition = new Vector3(newLevelPart.transform.position.x, newLevelPart.transform.position.y + 10f);
         }
     }
