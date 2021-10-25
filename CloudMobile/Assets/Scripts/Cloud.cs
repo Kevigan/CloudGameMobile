@@ -178,7 +178,7 @@ public class Cloud : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character)
         {
-            if (character.Velocity.y <= 0)
+            if (character.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
             {
                 character.SetYForce(addJumpForce);
                 enteredCloud = true;
@@ -190,10 +190,13 @@ public class Cloud : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character && enteredCloud)
         {
-            _jumpAmount--;
-            UpdateText();
-            CheckJumps();
-            enteredCloud = false;
+            if (GameManager.Main.GameState != GameState.LevelFinished)
+            {
+                _jumpAmount--;
+                UpdateText();
+                CheckJumps();
+                enteredCloud = false;
+            }
         }
     }
 }

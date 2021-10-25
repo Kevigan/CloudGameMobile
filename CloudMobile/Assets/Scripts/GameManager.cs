@@ -35,17 +35,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private GameObject startPointGameObject;
+    public float startHeight;
+    [SerializeField] private GameObject endPointGameObject;
+    public float endHeight;
+
+    public float actualHeight = 0;
+
     private void Awake()
     {
         if (Main == null)
         {
-            Debug.Log("this is main");
             Main = this;
             DontDestroyOnLoad(gameObject);
         }
         else if (Main != this)
         {
-            Debug.Log("this isnt main");
             Destroy(this);
         }
         _life = maxLife;
@@ -53,6 +58,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPointGameObject.transform.position = new Vector3(startPointGameObject.transform.position.x, startHeight);
+        endPointGameObject.transform.position = new Vector3(endPointGameObject.transform.position.x, endHeight);
         if (SceneManager.GetSceneByName("StartBildschirm").isLoaded)
         {
             gameState = GameState.Menu;
@@ -63,7 +70,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(gameState);
     }
 
     public void ChangeGameState(GameState newState)
@@ -84,6 +91,8 @@ public class GameManager : MonoBehaviour
             case GameState.LostLive:
                 break;
             case GameState.Menu:
+                break;
+            case GameState.LevelFinished:
                 break;
         }
         gameState = newState;
@@ -108,13 +117,11 @@ public class GameManager : MonoBehaviour
     {
         gyroScopeInput = true;
         touchInput = false;
-        Debug.Log(gyroScopeInput);
     }
     public void SetTouchInputActive()
     {
         touchInput = true;
         gyroScopeInput = false;
-        Debug.Log(touchInput);
     }
 
 }
@@ -125,5 +132,6 @@ public enum GameState
     Pause,
     Death,
     LostLive,
-    Menu
+    Menu,
+    LevelFinished
 }

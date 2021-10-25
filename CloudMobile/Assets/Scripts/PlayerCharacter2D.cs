@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,6 @@ public class PlayerCharacter2D : MonoBehaviour
     private bool movingRight;
     private bool movingLeft;
 
-    private GameManager gameManager;
 
     private void Start()
     {
@@ -53,19 +53,18 @@ public class PlayerCharacter2D : MonoBehaviour
         GameManager.Main.ChangeGameState(GameState.Playing);
         collisionDetection = GetComponent<CollisionDetection>();
         rigid = GetComponent<Rigidbody2D>();
-        //col = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
         if (GameManager.Main.GyroScopeInput) GyroscopeInput();
-        if (GameManager.Main.TouchInput)TouchInput();
+        if (GameManager.Main.TouchInput) TouchInput();
         HandleHöhenmeter();
         collisionDetection.HandleCollision();
     }
     private void FixedUpdate()
     {
-        if (rigid.position != touchPosition && GameManager.Main.GameState == GameState.Playing)
+        if (rigid.position != touchPosition && (GameManager.Main.GameState == GameState.Playing || GameManager.Main.GameState == GameState.LevelFinished))
         {
             CalculateYVelocity();
             ApplyVelocity();
@@ -75,11 +74,13 @@ public class PlayerCharacter2D : MonoBehaviour
     private void HandleHöhenmeter()
     {
         höhenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
+        GameManager.Main.actualHeight = this.transform.position.y;
     }
 
     private void ApplyVelocity()
     {
         velocity += addForce;
+        //moveDirection += addForce;
         addForce = Vector2.zero;
 
         velocity.x = xForceSet ? setForce.x : velocity.x;
@@ -88,7 +89,7 @@ public class PlayerCharacter2D : MonoBehaviour
         xForceSet = yForceSet = false;
 
         velocity.y = YVelocityIsActive ? velocity.y : 0f;
-        rigid.MovePosition(rigid.position + (new Vector2(moveDirection.x, velocity.y) * Time.fixedDeltaTime * speed));
+        rigid.MovePosition(rigid.position + (new Vector2(velocity.x, velocity.y) * Time.fixedDeltaTime * speed));
     }
     public void AddForce(Vector2 value)
     {
@@ -112,6 +113,7 @@ public class PlayerCharacter2D : MonoBehaviour
     }
     public void CalculateXVelocity(float currentInput)
     {
+
         velocity.x = currentInput * speed;
     }
 
@@ -130,8 +132,9 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private void GyroscopeInput()
     {
-        moveDirection.x = Input.acceleration.x * acceloratorSpeed;
-
+        //moveDirection.x = Input.acceleration.x * acceloratorSpeed;
+        if (GameManager.Main.GameState != GameState.LevelFinished)
+            velocity.x = Input.acceleration.x * acceloratorSpeed;
     }
 
     private void TouchInput()
@@ -168,22 +171,25 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         movingLeft = true;
         moveDirection = Vector2.left;
+        velocity.x = moveDirection.x;
     }
 
     public void GetTouchInputRight()
     {
         movingRight = true;
         moveDirection = Vector2.right;
+        velocity.x = moveDirection.x;
     }
     public void CancelMovingLeft()
     {
         movingLeft = false;
+        velocity.x = 0;
     }
     public void CanvelMovingRight()
     {
         movingRight = false;
+        velocity.x = 0;
     }
-
 }
 
 

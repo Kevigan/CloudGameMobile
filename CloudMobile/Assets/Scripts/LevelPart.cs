@@ -6,9 +6,7 @@ using UnityEngine.Events;
 public class LevelPart : MonoBehaviour
 {
     [SerializeField] private Transform[] positions;
-    public delegate void OnSpanwLevelPart();
 
-    public UnityEvent onAcitvateEvent;
 
     private void Awake()
     {
@@ -22,16 +20,13 @@ public class LevelPart : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("start");
         SpawnClouds();
-        LevelPartSpawner.onSpawnClouds += SpawnClouds;
     }
 
     public void SpawnClouds()
     {
         foreach (Transform pos in positions)
         {
-            var cloudPos = Random.Range(0.5f, 8.5f + 1);
             GameObject cloud = CloudPooler.Instance.SpawnFromPool(RandomCloud().ToString(), pos.position, Quaternion.identity);
             cloud.GetComponentInChildren<Cloud>().gameObject.SetActive(true);
             cloud.transform.parent = gameObject.transform;
@@ -49,13 +44,13 @@ public class LevelPart : MonoBehaviour
     {
         CloudNames tag = 0;
         int randomNumber = Random.Range(0, 10);
-        if (randomNumber < 6)
+        if (randomNumber <= 7)
         {
             tag = CloudNames.WhiteCloud;
         }
         else
         {
-            tag = (CloudNames)Random.Range(1, 2 + 1);
+            tag = (CloudNames)Random.Range(1, 3 + 1);
         }
 
         return tag;

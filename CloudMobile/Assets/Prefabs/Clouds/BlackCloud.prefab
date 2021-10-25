@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  addJumpForce: 2
+  addJumpForce: 3
   moveVertical: 0
   moveHorizontal: 1
   color: 5
