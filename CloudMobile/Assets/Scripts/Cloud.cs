@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum cloudColor
 {
@@ -15,26 +12,25 @@ public enum cloudColor
 }
 public class Cloud : MonoBehaviour
 {
-    
-
     [SerializeField] private float speed = 5f;
     [SerializeField] private float addJumpForce = 5;
     [SerializeField] private bool moveVertical;
     [SerializeField] private bool moveHorizontal;
 
+    //[SerializeField] private Animator animator;
+    [SerializeField] private TextMesh jumpAmountText;
+
     [SerializeField] private cloudColor color;
-    [SerializeField] private int jumpAmount = 1;
+    [SerializeField] private int _jumpAmount = 1;
+    public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
-    [SerializeField] private TextMeshProUGUI text;
 
-    List<PlayerCharacter2D> charPassengers = new List<PlayerCharacter2D>();
-
-    private int _jumpAmount;
+    private int jumpAmount;
 
     private Vector2 moveDelta;
     private SpriteRenderer spriteRenderer;
     private bool enteredCloud = false;
-    
+
 
     private void OnValidate()
     {
@@ -44,24 +40,40 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
-        _jumpAmount = jumpAmount;
+        jumpAmountText.text = jumpAmount.ToString();
+        SetJumpAmount();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (moveHorizontal) moveDelta = Vector2.right;
-        if (moveVertical) moveDelta = Vector2.up;
+
+        int zufall = Random.Range(0, 2);
+        if (zufall == 0)
+        {
+            if (moveHorizontal) moveDelta = Vector2.right;
+            if (moveVertical) moveDelta = Vector2.up;
+        }
+        else
+        {
+            if (moveHorizontal) moveDelta = Vector2.left;
+            if (moveVertical) moveDelta = Vector2.down;
+        }
         UpdateText();
     }
 
     private void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
-        if(GameManager.Main.GameState == GameState.Playing)
-            Move();
+        if (GameManager.Main.GameState == GameState.Playing)
+            ActiveColorehaviour();
     }
-    
+
+    public void SetJumpAmount()
+    {
+        jumpAmount = _jumpAmount;
+    }
+
     private void UpdateColor()
     {
         switch (color)
@@ -89,13 +101,13 @@ public class Cloud : MonoBehaviour
 
     private void UpdateText()
     {
-        text.text = _jumpAmount.ToString();
+        jumpAmountText.text = jumpAmount.ToString();
     }
 
     IEnumerator EnableCloud()
     {
         yield return new WaitForSeconds(5);
-        _jumpAmount = jumpAmount;
+        SetJumpAmount();
         UpdateText();
         BoxCollider2D[] box = GetComponents<BoxCollider2D>();
         foreach (BoxCollider2D col in box)
@@ -103,13 +115,11 @@ public class Cloud : MonoBehaviour
             col.enabled = true;
         }
         spriteRenderer.enabled = true;
-        Canvas canvas = GetComponentInChildren<Canvas>();
-        canvas.enabled = true;
     }
 
     private void CheckJumps()
     {
-        if (_jumpAmount <= 0)
+        if (jumpAmount <= 0)
         {
             BoxCollider2D[] box = GetComponents<BoxCollider2D>();
             foreach (BoxCollider2D col in box)
@@ -117,18 +127,40 @@ public class Cloud : MonoBehaviour
                 col.enabled = false;
             }
             spriteRenderer.enabled = false;
-            Canvas canvas = GetComponentInChildren<Canvas>();
-            canvas.enabled = false;
+            
             StartCoroutine(EnableCloud());
         }
     }
 
-    
-
-    private void Move()
+    private void ActiveColorehaviour()
     {
-        //if (transform.localPosition.x < -1) moveDelta = Vector2.right;
-        //if (transform.localPosition.x > 1) moveDelta = Vector2.left;
+        switch (color)
+        {
+            case cloudColor.red:
+                MoveRed();
+                break;
+            case cloudColor.blue:
+                break;
+            case cloudColor.green:
+                MoveGreen();
+                break;
+            case cloudColor.yellow:
+                break;
+            case cloudColor.white:
+                break;
+            case cloudColor.black:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void MoveGreen()
+    {
+        transform.localPosition += (Vector3)moveDelta * Time.fixedDeltaTime * speed;
+    }
+    private void MoveRed()
+    {
         if (transform.localPosition.y < -5) moveDelta = Vector2.up;
         if (transform.localPosition.y > 5) moveDelta = Vector2.down;
         transform.localPosition += (Vector3)moveDelta * Time.fixedDeltaTime * speed;
@@ -147,12 +179,11 @@ public class Cloud : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character)
         {
-            if(character.Velocity.y <= 0)
+            if (character.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
             {
                 character.SetYForce(addJumpForce);
                 enteredCloud = true;
             }
-            
         }
     }
 
@@ -160,10 +191,13 @@ public class Cloud : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character && enteredCloud)
         {
-            _jumpAmount--;
-            UpdateText();
-            CheckJumps();
-            enteredCloud = false;
+            if (GameManager.Main.GameState != GameState.LevelFinished)
+            {
+                jumpAmount--;
+                UpdateText();
+                CheckJumps();
+                enteredCloud = false;
+            }
         }
     }
 }

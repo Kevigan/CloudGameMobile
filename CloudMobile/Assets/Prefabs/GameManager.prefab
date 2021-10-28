@@ -43,4 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62462ab047aa01a4384fb44ce70b8e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 3
+  maxLife: 3
+  startPointGameObject: {fileID: 0}
+  startHeight: 0
+  endPointGameObject: {fileID: 0}
+  endHeight: 25
+  actualHeight: 0

@@ -34,7 +34,6 @@ public class CameraFollower : MonoBehaviour
 
     public void ChangeBool()
     {
-        Debug.Log("invoke");
         followNegative = !followNegative;
     }
 }

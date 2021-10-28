@@ -29,7 +29,6 @@ public class LevelPartPooler : MonoBehaviour
     {
         foreach (Pool item in poolsLevelParts)
         {
-            Debug.Log("tag: " + item.tag);
         }
     }
 
@@ -63,7 +62,6 @@ public class LevelPartPooler : MonoBehaviour
         GameObject objectToSpawn = poolDictionaryLevelPart[tag].Dequeue();
 
         objectToSpawn.SetActive(true);
-        //objectToSpawn.GetComponentInChildren<GameObject>().gameObject.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 

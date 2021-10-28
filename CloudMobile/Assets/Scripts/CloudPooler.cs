@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CloudPooler : MonoBehaviour
 {
-
     public static CloudPooler Instance;
 
     private void Awake()
@@ -35,12 +35,12 @@ public class CloudPooler : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
+                obj.transform.parent = gameObject.transform;
                 objectPool.Enqueue(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
         }
-        Debug.Log("dictCount: " + poolDictionary.Count);
     }
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
@@ -58,6 +58,7 @@ public class CloudPooler : MonoBehaviour
         objectToSpawn.transform.rotation = rotation;
 
         poolDictionary[tag].Enqueue(objectToSpawn);
+
 
         return objectToSpawn;
     }
