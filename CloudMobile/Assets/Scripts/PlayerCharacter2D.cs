@@ -46,6 +46,10 @@ public class PlayerCharacter2D : MonoBehaviour
     private bool movingRight;
     private bool movingLeft;
 
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {

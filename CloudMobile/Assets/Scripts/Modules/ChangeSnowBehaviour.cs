@@ -10,17 +10,21 @@ public class ChangeSnowBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        WindField.changeDirection += OnChangeBehaviour;
+        WindField.changeDirectionOfSnow += OnChangeBehaviour;
     }
 
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 20);
+    }
+
+    private void OnDestroy()
+    {
+        WindField.changeDirectionOfSnow -= OnChangeBehaviour;
     }
 
     public void OnChangeBehaviour(int direction)

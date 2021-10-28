@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         get => gameState;
     }
 
+    [SerializeField] private PlayerCharacter2D player;
+
     private int _life;
     public int Life
     {
@@ -41,6 +43,10 @@ public class GameManager : MonoBehaviour
     public float endHeight;
 
     public float actualHeight = 0;
+    private float activateWindHeight = 25;
+
+    public delegate void OnHeightReached();
+    public static event OnHeightReached activateWindField;
 
     private void Awake()
     {
@@ -51,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Main != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         _life = maxLife;
     }
@@ -70,7 +76,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gameState);
+        if(actualHeight > activateWindHeight)
+        {
+            Debug.Log("startWind");
+            activateWindField.Invoke();
+            activateWindHeight += 25;
+        }
     }
 
     public void ChangeGameState(GameState newState)
@@ -123,6 +134,8 @@ public class GameManager : MonoBehaviour
         touchInput = true;
         gyroScopeInput = false;
     }
+
+    
 
 }
 

@@ -8,8 +8,8 @@ public class CloudDespawner : MonoBehaviour
     {
         if (collision.GetComponent<Cloud>() is Cloud cloud)
         {
-            // cloud.gameObject.SetActive(false);
             cloud.transform.parent.gameObject.SetActive(false);
+            cloud.SetJumpAmount();
         }
     }
 }

@@ -5,34 +5,59 @@ using UnityEngine;
 public class WindField : MonoBehaviour
 {
     public delegate void OnChangeWindDirection(int direction);
-    public static event OnChangeWindDirection changeDirection;
+    public static event OnChangeWindDirection changeDirectionOfSnow;
 
     public Vector2 windDirection = Vector2.zero;
     public float windSpeed = 5f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private bool windActive = false;
+
+    private void Awake()
     {
-        if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
-        {
-            if (changeDirection != null && windDirection.x > 0)
-            {
-                changeDirection(1);
-            }
-            else if (changeDirection != null && windDirection.x < 0)
-            {
-                changeDirection(-1);
-            }
-        }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void Start()
     {
-        if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
+        GameManager.activateWindField += ActivateWindField;
+    }
+
+    private void Update()
+    {
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 3);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.activateWindField -= ActivateWindField;
+    }
+
+    public void ActivateWindField()
+    {
+        if (changeDirectionOfSnow != null && windDirection.x > 0)
         {
-            if (changeDirection != null)
-            {
-                changeDirection(0);
-            }
+            changeDirectionOfSnow(1);
+            windActive = true;
+        }
+        else if (changeDirectionOfSnow != null && windDirection.x < 0)
+        {
+            windActive = true;
+            changeDirectionOfSnow(-1);
+        }
+
+        StartCoroutine(DeactivateWindField());
+    }
+
+    IEnumerator DeactivateWindField()
+    {
+        yield return new WaitForSeconds(5);
+        if (changeDirectionOfSnow != null)
+        {
+            changeDirectionOfSnow(0);
+            windActive = false;
         }
     }
 
@@ -40,7 +65,7 @@ public class WindField : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
-            if (GameManager.Main.GameState != GameState.LevelFinished)
+            if (GameManager.Main.GameState != GameState.LevelFinished && windActive)
             {
                 Vector3 bla = new Vector3(windDirection.x, player.Velocity.y);
                 player.transform.position += new Vector3(bla.x * windSpeed, player.Velocity.y) * Time.fixedDeltaTime;
