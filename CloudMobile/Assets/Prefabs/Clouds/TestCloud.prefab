@@ -231,6 +231,8 @@ MonoBehaviour:
   jumpAmountText: {fileID: 2495121089407814808}
   color: 5
   _jumpAmount: 55
+  collectables: []
+  spawnPoint: {fileID: 0}
 --- !u!1 &6104789469865740028
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 43d59b5c638b0664db55f3a4e4d130ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,7 +325,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295

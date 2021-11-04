@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 3
-  startPointGameObject: {fileID: 0}
+  player: {fileID: 7966673241812409785, guid: c1d444ba9f5ebb244a584d265e86f1c2, type: 3}
+  startPointGameObject: {fileID: 4311307457153171628, guid: 5095aa73a55bb4549ab5b7be0018412c, type: 3}
   startHeight: 0
-  endPointGameObject: {fileID: 0}
-  endHeight: 25
+  endPointGameObject: {fileID: 537513117074917416, guid: c3553d4eada8b9345a7f54839e7e3f2c, type: 3}
+  endHeight: 50
   actualHeight: 0
+  highestHeight: 0
+  _highestHeight: 0

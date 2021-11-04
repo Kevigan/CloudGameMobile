@@ -7,12 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Main;
     [SerializeField] private int maxLife;
-    public int MaxLife { get=> maxLife; set => maxLife = value; }
+    public int MaxLife { get => maxLife; set => maxLife = value; }
 
     private bool gyroScopeInput = true;
     public bool GyroScopeInput { get => gyroScopeInput; set => gyroScopeInput = value; }
     private bool touchInput = false;
     public bool TouchInput { get => touchInput; set => touchInput = value; }
+
+    private int actualHighScore = 0;
+    public int ActualHighScore { get => actualHighScore; set { actualHighScore = value; } }
+    [HideInInspector]
+    public int HighScore;
 
     private GameState gameState;
     public GameState GameState
@@ -32,6 +37,7 @@ public class GameManager : MonoBehaviour
             UIManager.Main.SetHearts();
             if (Life <= 0)
             {
+                SaveHighScore();
                 ChangeGameState(GameState.Death);
             }
         }
@@ -44,6 +50,10 @@ public class GameManager : MonoBehaviour
 
     public float actualHeight = 0;
     private float activateWindHeight = 25;
+    [HideInInspector]
+    public float highestHeight = 0;
+    //[HideInInspector]
+    public float _highestHeight = 0;
 
     public delegate void OnHeightReached();
     public static event OnHeightReached activateWindField;
@@ -64,6 +74,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HighScore = PlayerPrefs.GetInt("Car");
         startPointGameObject.transform.position = new Vector3(startPointGameObject.transform.position.x, startHeight);
         endPointGameObject.transform.position = new Vector3(endPointGameObject.transform.position.x, endHeight);
         if (SceneManager.GetSceneByName("StartBildschirm").isLoaded)
@@ -76,12 +87,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(actualHeight > activateWindHeight)
+        if (highestHeight > _highestHeight) _highestHeight = highestHeight;
+        if (actualHeight > activateWindHeight)
         {
-            Debug.Log("startWind");
             activateWindField.Invoke();
             activateWindHeight += 25;
         }
+        Debug.Log("actual:   "+ GameManager.Main.ActualHighScore);
+        Debug.Log("highscore:   "+ GameManager.Main.HighScore);
     }
 
     public void ChangeGameState(GameState newState)
@@ -104,19 +117,34 @@ public class GameManager : MonoBehaviour
             case GameState.Menu:
                 break;
             case GameState.LevelFinished:
+                UIManager.Main.ChangeUIState(UIState.LevelFinished);
                 break;
         }
         gameState = newState;
     }
 
+    public void UpdateScore()
+    {
+        UIManager.Main.scoreText.text = "Score: " + actualHighScore.ToString();
+    }
+
+    public void ResetValues()
+    {
+        GameManager.Main.ActualHighScore = 0;
+        GameManager.Main._highestHeight = 0;
+        GameManager.Main.actualHeight = 0;
+    }
+
     public void LoadMenuScene()
     {
+        SaveHighScore();
         ChangeGameState(GameState.Menu);
         SceneManager.LoadScene(0);
     }
     public void LoadScene(int i)
     {
         SceneManager.LoadScene(i);
+        ResetValues();
         ChangeGameState(GameState.Playing);
     }
     public void QuitGame()
@@ -135,8 +163,17 @@ public class GameManager : MonoBehaviour
         gyroScopeInput = false;
     }
 
-    
-
+    public void SaveHighScore()
+    {
+            
+        if (GameManager.Main.ActualHighScore > GameManager.Main.HighScore)
+        {
+            HighScore = ActualHighScore;
+            PlayerPrefs.SetInt("Car", GameManager.Main.HighScore);
+            PlayerPrefs.Save();
+           
+        }
+    }
 }
 
 public enum GameState

@@ -7,6 +7,7 @@ public class ChangeSnowBehaviour : MonoBehaviour
     public ParticleSystem psNormal;
     public ParticleSystem psLeft;
     public ParticleSystem psRight;
+    public ParticleSystem stars;
 
     private void Awake()
     {
@@ -15,6 +16,12 @@ public class ChangeSnowBehaviour : MonoBehaviour
     private void Start()
     {
         WindField.changeDirectionOfSnow += OnChangeBehaviour;
+        OnChangeBehaviour(0);
+    }
+
+    private void OnEnable()
+    {
+        DeactivateParticles();
     }
 
     private void Update()
@@ -49,5 +56,6 @@ public class ChangeSnowBehaviour : MonoBehaviour
         psLeft.gameObject.SetActive(false);
         psNormal.gameObject.SetActive(false);
         psRight.gameObject.SetActive(false);
+        //stars.gameObject.SetActive(false);
     }
 }

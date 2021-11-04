@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoarderScript : MonoBehaviour
 {
     [SerializeField] private GameObject oppositeBoarder;
-    [SerializeField] private float distance = .5f;
+    [SerializeField] private float distance = 0f;
     [SerializeField] private bool leftBoarder;
     [SerializeField] private bool rightBoarder;
 
@@ -13,8 +13,10 @@ public class BoarderScript : MonoBehaviour
     private void Start()
     {
         float cameraWidth = Screen.width;
-        if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + 100, transform.position.y));
-        if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, transform.position.y));
+        //if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + 100, transform.position.y));
+        //if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, transform.position.y));
+        if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + (cameraWidth / 12), transform.position.y));
+        if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-(cameraWidth / 12), transform.position.y));
 
         transform.position = cameraPos;
     }

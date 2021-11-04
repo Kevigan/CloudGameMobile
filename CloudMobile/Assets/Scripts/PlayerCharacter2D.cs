@@ -16,6 +16,9 @@ public class PlayerCharacter2D : MonoBehaviour
     public float JumpForce { get => jumpForce; set { jumpForce = value; } }
 
     [SerializeField] private float speed = 5f;
+    [Range(0, 2)]
+    [SerializeField] private float xMoveAdjustment;
+
     [SerializeField] private float gravityMultipier = 5f;
 
     [Range(1, 2)]
@@ -46,13 +49,18 @@ public class PlayerCharacter2D : MonoBehaviour
     private bool movingRight;
     private bool movingLeft;
 
+    private int lastHeightPoint;
+
     private void Awake()
     {
-        
+
     }
 
     private void Start()
     {
+        GameManager.Main.UpdateScore();
+        SetYForce(3);
+        lastHeightPoint = (int)transform.position.y;
         GameManager.Main.Life = GameManager.Main.MaxLife;
         GameManager.Main.ChangeGameState(GameState.Playing);
         collisionDetection = GetComponent<CollisionDetection>();
@@ -73,12 +81,24 @@ public class PlayerCharacter2D : MonoBehaviour
             CalculateYVelocity();
             ApplyVelocity();
         }
+        CalculateDistancePoints();
+    }
+    private void CalculateDistancePoints()
+    {
+        if (transform.position.y - lastHeightPoint >= 1)
+        {
+            GameManager.Main.ActualHighScore += 10;
+            lastHeightPoint = (int)transform.position.y;
+            GameManager.Main.UpdateScore();
+        }
     }
 
     private void HandleHöhenmeter()
     {
         höhenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
         GameManager.Main.actualHeight = this.transform.position.y;
+        GameManager.Main.highestHeight = this.transform.position.y;
+        if (GameManager.Main.highestHeight > GameManager.Main._highestHeight && velocity.y > 0) GameManager.Main._highestHeight = GameManager.Main.highestHeight;
     }
 
     private void ApplyVelocity()
@@ -117,7 +137,6 @@ public class PlayerCharacter2D : MonoBehaviour
     }
     public void CalculateXVelocity(float currentInput)
     {
-
         velocity.x = currentInput * speed;
     }
 
@@ -175,14 +194,14 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         movingLeft = true;
         moveDirection = Vector2.left;
-        velocity.x = moveDirection.x;
+        velocity.x = moveDirection.x / xMoveAdjustment;
     }
 
     public void GetTouchInputRight()
     {
         movingRight = true;
         moveDirection = Vector2.right;
-        velocity.x = moveDirection.x;
+        velocity.x = moveDirection.x / xMoveAdjustment;
     }
     public void CancelMovingLeft()
     {
