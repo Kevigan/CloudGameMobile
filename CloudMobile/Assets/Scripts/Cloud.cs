@@ -22,6 +22,10 @@ public class Cloud : MonoBehaviour
 
     [SerializeField] private cloudColor color;
     [SerializeField] private int _jumpAmount = 1;
+    [Header("Collectables")]
+    [SerializeField] private Collectables[] collectables;
+    [SerializeField] private Transform spawnPoint;
+
     public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
 
@@ -31,6 +35,7 @@ public class Cloud : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool enteredCloud = false;
 
+    private bool firstActivation = false;
 
     private void OnValidate()
     {
@@ -40,6 +45,7 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
+        GenerateRandomCollectable();
         jumpAmountText.text = jumpAmount.ToString();
         SetJumpAmount();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -58,6 +64,11 @@ public class Cloud : MonoBehaviour
         UpdateText();
     }
 
+    private void OnEnable()
+    {
+        if (firstActivation) GenerateRandomCollectable();
+    }
+
     private void Update()
     {
 
@@ -67,6 +78,18 @@ public class Cloud : MonoBehaviour
     {
         if (GameManager.Main.GameState == GameState.Playing)
             ActiveColorehaviour();
+    }
+
+    private void GenerateRandomCollectable()
+    {
+        firstActivation = true;
+        int number = Random.Range(0, collectables.Length);
+        int number2 = Random.Range(0, 10);
+        if (number2 > 6)
+        {
+            Collectables _collectables = Instantiate(collectables[number], spawnPoint.position, Quaternion.identity);
+            _collectables.transform.parent = gameObject.transform;
+        }
     }
 
     public void SetJumpAmount()
@@ -127,7 +150,7 @@ public class Cloud : MonoBehaviour
                 col.enabled = false;
             }
             spriteRenderer.enabled = false;
-            
+
             StartCoroutine(EnableCloud());
         }
     }
@@ -177,14 +200,14 @@ public class Cloud : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character)
-        {
-            if (character.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
-            {
-                character.SetYForce(addJumpForce);
-                enteredCloud = true;
-            }
-        }
+        //if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character)
+        //{
+        //    if (character.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
+        //    {
+        //        character.SetYForce(addJumpForce);
+        //        enteredCloud = true;
+        //    }
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -197,6 +220,18 @@ public class Cloud : MonoBehaviour
                 UpdateText();
                 CheckJumps();
                 enteredCloud = false;
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
+        {
+            if (player.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
+            {
+                player.SetYForce(addJumpForce);
+                enteredCloud = true;
             }
         }
     }

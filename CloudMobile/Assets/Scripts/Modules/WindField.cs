@@ -9,6 +9,7 @@ public class WindField : MonoBehaviour
 
     public Vector2 windDirection = Vector2.zero;
     public float windSpeed = 5f;
+    public float windTime = 3f;
 
     private bool windActive = false;
 
@@ -27,6 +28,7 @@ public class WindField : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Main.GameState != GameState.Playing) return;
         transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y + 3);
     }
 
@@ -53,7 +55,7 @@ public class WindField : MonoBehaviour
 
     IEnumerator DeactivateWindField()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(windTime);
         if (changeDirectionOfSnow != null)
         {
             changeDirectionOfSnow(0);

@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class LevelPart : MonoBehaviour
 {
     [SerializeField] private Transform[] positions;
+    private bool started = false;
 
+    private Vector3 screen = Vector3.zero;
 
     private void Awake()
     {
@@ -15,32 +17,41 @@ public class LevelPart : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnClouds();
+        foreach (Transform pos in positions)
+        {
+            screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+            pos.position = new Vector3(screen.x, pos.position.y);
+        }
+
+        if (started) SpawnClouds();
     }
 
     private void Start()
     {
         SpawnClouds();
+        started = true;
     }
 
     public void SpawnClouds()
     {
+        int i = 0;
         foreach (Transform pos in positions)
         {
-            GameObject cloud = CloudPooler.Instance.SpawnFromPool(RandomCloud().ToString(), pos.position, Quaternion.identity);
+            GameObject cloud = CloudPooler.Instance.SpawnFromPool(RandomCloud(i).ToString(), pos.position, Quaternion.identity);
             cloud.GetComponentInChildren<Cloud>().gameObject.SetActive(true);
             cloud.transform.parent = gameObject.transform;
-            cloud.transform.position = new Vector3(pos.transform.position.x - CloudPosition(), pos.transform.position.y);
+            cloud.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
         }
     }
 
     private float CloudPosition()
     {
-        float x = Random.Range(0f, 8f + 1f);
+        float num = Mathf.Abs(Camera.main.transform.position.x);
+        float x = Random.Range(-screen.x - num, screen.x);
         return x;
     }
 
-    private CloudNames RandomCloud()
+    private CloudNames RandomCloud(int i)
     {
         CloudNames tag = 0;
         int randomNumber = Random.Range(0, 10);
@@ -48,7 +59,7 @@ public class LevelPart : MonoBehaviour
         {
             tag = CloudNames.WhiteCloud;
         }
-        else
+        else if(i % 2 == 0)
         {
             tag = (CloudNames)Random.Range(1, 3 + 1);
         }

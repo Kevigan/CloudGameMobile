@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2847327158276644823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2847327158276644817}
+  - component: {fileID: 2847327158276644822}
+  m_Layer: 0
+  m_Name: CloudPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2847327158276644817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847327158276644823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2847327158276644822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847327158276644823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8c3bca6f5d4034c95a82ad18ee454d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: RedCloud
+    prefab: {fileID: 1515889502234405886, guid: 545b9ad14f1218f45afe27b3424bca26, type: 3}
+    size: 50
+  - tag: BlackCloud
+    prefab: {fileID: 773497581115277697, guid: b323572c20c23684faa3389a7b91effc, type: 3}
+    size: 50
+  - tag: BlueCloud
+    prefab: {fileID: 7793960050294928586, guid: 6c5bbf87adb6808439ef274cb90251e8, type: 3}
+    size: 50
+  - tag: GreenCloud
+    prefab: {fileID: 3001831844368748349, guid: 5761f2a5bdccc7a4eb9171d30ccd90df, type: 3}
+    size: 50
+  - tag: WhiteCloud
+    prefab: {fileID: 243495665454684155, guid: 92f7b7ab818b31d42a3a2469c2dec126, type: 3}
+    size: 50
+  - tag: YellowCloud
+    prefab: {fileID: 4678459385884877565, guid: 6a6a779675bfdcd418389b88161724b7, type: 3}
+    size: 50

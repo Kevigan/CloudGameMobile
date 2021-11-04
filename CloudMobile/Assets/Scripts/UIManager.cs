@@ -8,11 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Main;
 
-    [SerializeField] private GameObject HUDpanel, PausePanel, DeathPanel;
+    [SerializeField] private GameObject HUDpanel, PausePanel, DeathPanel, LevelFinishedPanel;
     [SerializeField] private GameObject touchFields;
     public GameObject TouchFields { get => touchFields; set => touchFields = value; }
     public int numOfHearts;
     public Image[] hearts;
+
+    [Header("Score")]
+    public Text scoreText;
 
     // public Sprite fullHeart;
 
@@ -56,6 +59,9 @@ public class UIManager : MonoBehaviour
             case UIState.Death:
                 DeathPanel.SetActive(true);
                 break;
+            case UIState.LevelFinished:
+                LevelFinishedPanel.SetActive(true);
+                break;
 
         }
     }
@@ -74,6 +80,10 @@ public class UIManager : MonoBehaviour
     public void ActivateHUDPanel()
     {
         GameManager.Main.ChangeGameState(GameState.Playing);
+    }
+    public void LoadMenuScene()
+    {
+        GameManager.Main.LoadMenuScene();
     }
 
     public void SetHearts()
@@ -103,5 +113,6 @@ public enum UIState
     HUD,
     Pause,
     Death,
-    Menu
+    Menu,
+    LevelFinished
 }

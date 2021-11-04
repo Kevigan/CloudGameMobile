@@ -38,6 +38,7 @@ public class DamageColider : MonoBehaviour
         //confiner.transform.position = new Vector3(confiner.transform.position.x, player.transform.position.y - 5);
         yield return new WaitForSeconds(3);
         GameManager.Main.ChangeGameState(GameState.Playing);
+        player.transform.position = new Vector3(player.transform.position.x, GameManager.Main._highestHeight);
         player.SetYForce(katapultForce);
         timerStarted = true;
         justExited = false;
