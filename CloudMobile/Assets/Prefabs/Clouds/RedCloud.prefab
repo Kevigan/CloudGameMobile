@@ -257,8 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.75
   addJumpForce: 2
-  moveVertical: 1
-  moveHorizontal: 0
+  moveVertical: 0
+  moveHorizontal: 1
   jumpAmountText: {fileID: 4584139488605436136}
   color: 0
   _jumpAmount: 55
