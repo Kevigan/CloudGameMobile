@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PlayerCharacter2D : MonoBehaviour
 {
 
-    [Header("Höhenmeter Einstellungen")]
-    [SerializeField] Scrollbar höhenMeter;
+    [Header("H?henmeter Einstellungen")]
+    [SerializeField] Scrollbar hoehenMeter;
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float jumpForce = 5;
@@ -51,6 +51,7 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private int lastHeightPoint;
 
+
     private void Awake()
     {
 
@@ -71,7 +72,7 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         if (GameManager.Main.GyroScopeInput) GyroscopeInput();
         if (GameManager.Main.TouchInput) TouchInput();
-        HandleHöhenmeter();
+        HandleHoehenmeter();
         collisionDetection.HandleCollision();
     }
     private void FixedUpdate()
@@ -93,9 +94,9 @@ public class PlayerCharacter2D : MonoBehaviour
         }
     }
 
-    private void HandleHöhenmeter()
+    private void HandleHoehenmeter()
     {
-        höhenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
+        hoehenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
         GameManager.Main.actualHeight = this.transform.position.y;
         GameManager.Main.highestHeight = this.transform.position.y;
         if (GameManager.Main.highestHeight > GameManager.Main._highestHeight && velocity.y > 0) GameManager.Main._highestHeight = GameManager.Main.highestHeight;

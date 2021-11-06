@@ -8,10 +8,15 @@ public class WindField : MonoBehaviour
     public static event OnChangeWindDirection changeDirectionOfSnow;
 
     public Vector2 windDirection = Vector2.zero;
+    private int direction;
     public float windSpeed = 5f;
     public float windTime = 3f;
 
     private bool windActive = false;
+
+    //public ParticleSystem psNormal;
+    //public ParticleSystem psLeft;
+    //public ParticleSystem psRight;
 
     private void Awake()
     {
@@ -39,15 +44,20 @@ public class WindField : MonoBehaviour
 
     public void ActivateWindField()
     {
-        if (changeDirectionOfSnow != null && windDirection.x > 0)
+        // int[] a = { -1 , 1 };
+        //int num = Random.Range(0, 2);
+        //windDirection = new Vector2(a[num], 0);
+        //OnChangeBehaviour(num);
+        //windActive = true;
+        if (changeDirectionOfSnow != null && GameManager.Main.windDirection > 0)
         {
-            changeDirectionOfSnow(1);
+            //changeDirectionOfSnow();
             windActive = true;
         }
-        else if (changeDirectionOfSnow != null && windDirection.x < 0)
+        else if (changeDirectionOfSnow != null && GameManager.Main.windDirection < 0)
         {
             windActive = true;
-            changeDirectionOfSnow(-1);
+            //changeDirectionOfSnow();
         }
 
         StartCoroutine(DeactivateWindField());
@@ -63,14 +73,16 @@ public class WindField : MonoBehaviour
         }
     }
 
+    
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
             if (GameManager.Main.GameState != GameState.LevelFinished && windActive)
             {
-                Vector3 bla = new Vector3(windDirection.x, player.Velocity.y);
-                player.transform.position += new Vector3(bla.x * windSpeed, player.Velocity.y) * Time.fixedDeltaTime;
+                //Vector3 direction = new Vector3(windDirection.x, player.Velocity.y);
+                player.transform.position += new Vector3(GameManager.Main.windDirection * windSpeed, player.Velocity.y) * Time.fixedDeltaTime;
             }
         }
     }

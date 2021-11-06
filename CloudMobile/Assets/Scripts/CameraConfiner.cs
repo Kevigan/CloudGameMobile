@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraConfiner : MonoBehaviour
 {
-    [SerializeField] private Scrollbar höhenMeter;
+    [SerializeField] private Scrollbar hoehenMeter;
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
 
@@ -26,13 +26,13 @@ public class CameraConfiner : MonoBehaviour
         if (timerStarted && GameManager.Main.GameState != GameState.Death)
         {
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime;
-            HandleHöhenmeter();
+            HandleHoehenmeter();
         }
     }
 
-    private void HandleHöhenmeter()
+    private void HandleHoehenmeter()
     {
-        höhenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
+        hoehenMeter.value = ((transform.position.y - startPoint.transform.position.y) / (endPoint.transform.position.y - startPoint.transform.position.y));
     }
 
     IEnumerator StartTimer()

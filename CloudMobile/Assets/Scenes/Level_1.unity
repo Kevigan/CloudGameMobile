@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5530842308774041778, guid: 93e75df20d53879418848876d55ad7ae, type: 3}
+      propertyPath: endHeight
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 5530842308774041779, guid: 93e75df20d53879418848876d55ad7ae, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -866,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca305163d81c5345a6844bea347cebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "h\xF6henMeter": {fileID: 718284641}
+  hoehenMeter: {fileID: 0}
   startPoint: {fileID: 1122701971}
   endPoint: {fileID: 0}
   player: {fileID: 1717763895}
@@ -1626,17 +1630,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1515889502234405887, guid: 545b9ad14f1218f45afe27b3424bca26, type: 3}
   m_PrefabInstance: {fileID: 991582779}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &718284641 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3598259629479640876, guid: 6452f7a97a0802f48b4388e94816d71b, type: 3}
-  m_PrefabInstance: {fileID: 3598259630172739661}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &735091039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1784,7 +1777,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 750555150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2075176259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: LoadMenuScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &750555150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3900,6 +3905,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1515889502234405887, guid: 545b9ad14f1218f45afe27b3424bca26, type: 3}
   m_PrefabInstance: {fileID: 1068008853}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2075176259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3598259631210886264, guid: 6452f7a97a0802f48b4388e94816d71b, type: 3}
+  m_PrefabInstance: {fileID: 3598259630172739661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f37c2032a0ff84dbe3e8cf6f27e03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &537513117429624872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4441,6 +4457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5667428668308914845, guid: 8de9f2c3670eb3c49b812dc86e8c4397, type: 3}
+      propertyPath: poolsLevelParts.Array.data[0].size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5667428668308914846, guid: 8de9f2c3670eb3c49b812dc86e8c4397, type: 3}
       propertyPath: m_Name
       value: LevelPartPooler
@@ -4621,6 +4641,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6361992534466056858, guid: 4adb7fc71bcd42245a076c8f5ce0474f, type: 3}
+      propertyPath: psLeft
+      value: 
+      objectReference: {fileID: 3013059606589315513, guid: 899dae22f051fc449abb8242df640c25, type: 3}
+    - target: {fileID: 6361992534466056858, guid: 4adb7fc71bcd42245a076c8f5ce0474f, type: 3}
+      propertyPath: psRight
+      value: 
+      objectReference: {fileID: 5612468985377362418, guid: 495ade54e576bde499daa4693fbe0d77, type: 3}
+    - target: {fileID: 6361992534466056858, guid: 4adb7fc71bcd42245a076c8f5ce0474f, type: 3}
+      propertyPath: psNormal
+      value: 
+      objectReference: {fileID: 9195942264338001480, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
     - target: {fileID: 6361992534466056858, guid: 4adb7fc71bcd42245a076c8f5ce0474f, type: 3}
       propertyPath: windSpeed
       value: 1.47
@@ -4936,6 +4968,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4311307457153171629, guid: 5095aa73a55bb4549ab5b7be0018412c, type: 3}
     - target: {fileID: 7966673241812409785, guid: c1d444ba9f5ebb244a584d265e86f1c2, type: 3}
+      propertyPath: hoehenMeter
+      value: 
+      objectReference: {fileID: 1133900233}
+    - target: {fileID: 7966673241812409785, guid: c1d444ba9f5ebb244a584d265e86f1c2, type: 3}
       propertyPath: "h\xF6henMeter"
       value: 
       objectReference: {fileID: 1133900233}
@@ -5096,6 +5132,10 @@ PrefabInstance:
     - target: {fileID: 8354116177535686160, guid: ba526e3d40418dd4a999e73f3aa91d24, type: 3}
       propertyPath: m_Name
       value: ParticleGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354116177535686161, guid: ba526e3d40418dd4a999e73f3aa91d24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8354116177535686166, guid: ba526e3d40418dd4a999e73f3aa91d24, type: 3}
       propertyPath: m_RootOrder

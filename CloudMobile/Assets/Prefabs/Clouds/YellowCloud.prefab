@@ -332,6 +332,7 @@ MonoBehaviour:
   - {fileID: 138387462150724135, guid: 364aa8c384331d24ca875e4fe62fa745, type: 3}
   - {fileID: 344577866378045936, guid: c339e8c1424645340a8dfeb2565cea00, type: 3}
   spawnPoint: {fileID: 6898297366269960466}
+  tempEquip: {fileID: 7948807970646716329, guid: ed0dc9c199f6a446e91b162d256132a7, type: 3}
 --- !u!1 &4678459385884877565
 GameObject:
   m_ObjectHideFlags: 0

@@ -1182,7 +1182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530842308774041778, guid: 93e75df20d53879418848876d55ad7ae, type: 3}
       propertyPath: endHeight
-      value: 150
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5530842308774041778, guid: 93e75df20d53879418848876d55ad7ae, type: 3}
       propertyPath: endPointGameObject

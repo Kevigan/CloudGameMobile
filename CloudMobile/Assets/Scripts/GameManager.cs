@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public delegate void OnHeightReached();
     public static event OnHeightReached activateWindField;
 
+    public int windDirection;
+
     private void Awake()
     {
         if (Main == null)
@@ -90,11 +92,12 @@ public class GameManager : MonoBehaviour
         if (highestHeight > _highestHeight) _highestHeight = highestHeight;
         if (actualHeight > activateWindHeight)
         {
+            int[] a = { -1, 1 };
+            int i = Random.Range(0,2);
+            windDirection = a[i];
             activateWindField.Invoke();
             activateWindHeight += 25;
         }
-        Debug.Log("actual:   "+ GameManager.Main.ActualHighScore);
-        Debug.Log("highscore:   "+ GameManager.Main.HighScore);
     }
 
     public void ChangeGameState(GameState newState)
@@ -130,7 +133,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetValues()
     {
+        GameManager.Main.activateWindHeight = 25;
         GameManager.Main.ActualHighScore = 0;
+        GameManager.Main.highestHeight = 0;
         GameManager.Main._highestHeight = 0;
         GameManager.Main.actualHeight = 0;
     }

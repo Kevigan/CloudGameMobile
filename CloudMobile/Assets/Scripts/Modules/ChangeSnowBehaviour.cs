@@ -16,6 +16,7 @@ public class ChangeSnowBehaviour : MonoBehaviour
     private void Start()
     {
         WindField.changeDirectionOfSnow += OnChangeBehaviour;
+        GameManager.activateWindField += ChangeDirection;
         OnChangeBehaviour(0);
     }
 
@@ -32,6 +33,12 @@ public class ChangeSnowBehaviour : MonoBehaviour
     private void OnDestroy()
     {
         WindField.changeDirectionOfSnow -= OnChangeBehaviour;
+        GameManager.activateWindField -= ChangeDirection;
+    }
+
+    private void ChangeDirection()
+    {
+        OnChangeBehaviour(GameManager.Main.windDirection);
     }
 
     public void OnChangeBehaviour(int direction)

@@ -32,6 +32,13 @@ public class LevelPart : MonoBehaviour
         started = true;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (Camera.main.transform.position.y + 75 < transform.position.y) gameObject.SetActive(false);
+    }
+    
+
     public void SpawnClouds()
     {
         int i = 0;
@@ -67,11 +74,6 @@ public class LevelPart : MonoBehaviour
         return tag;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
 public enum CloudNames
 {

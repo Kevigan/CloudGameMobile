@@ -25,6 +25,8 @@ public class Cloud : MonoBehaviour
     [Header("Collectables")]
     [SerializeField] private Collectables[] collectables;
     [SerializeField] private Transform spawnPoint;
+    [Header("TempEquip")]
+    [SerializeField] private TemporaryEquipment tempEquip;
 
     public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
@@ -84,11 +86,15 @@ public class Cloud : MonoBehaviour
     {
         firstActivation = true;
         int number = Random.Range(0, collectables.Length);
-        int number2 = Random.Range(0, 10);
-        if (number2 > 6)
+        int number2 = Random.Range(0, 1000);
+        if (number2 > 600)
         {
             Collectables _collectables = Instantiate(collectables[number], spawnPoint.position, Quaternion.identity);
             _collectables.transform.parent = gameObject.transform;
+        }else if (number2 < 10)
+        {
+            TemporaryEquipment item = Instantiate(tempEquip, spawnPoint.position, Quaternion.identity);
+            item.transform.parent = gameObject.transform;
         }
     }
 

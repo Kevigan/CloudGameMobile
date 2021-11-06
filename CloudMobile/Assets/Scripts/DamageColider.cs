@@ -9,33 +9,21 @@ public class DamageColider : MonoBehaviour
 
     public delegate void OnPlayerFalling();
     public static event OnPlayerFalling onPlayerFalling;
-    //[SerializeField] private CameraConfiner confiner;
-
-   // [SerializeField] private LayerMask layer;
 
     private bool timerStarted = false;
     private bool justExited = false;
 
     private void Start()
     {
-       // confiner = GetComponentInParent<CameraConfiner>();
     }
 
     private void Update()
     {
 
     }
-    //IEnumerator StartTimer()
-    //{
-    //    yield return new WaitForSeconds(timer);
-    //    timerStarted = true;
-    //}
+    
     IEnumerator PauseTimer(PlayerCharacter2D player)
     {
-        //yield return new WaitForSeconds(1);
-        
-       
-        //confiner.transform.position = new Vector3(confiner.transform.position.x, player.transform.position.y - 5);
         yield return new WaitForSeconds(3);
         GameManager.Main.ChangeGameState(GameState.Playing);
         player.transform.position = new Vector3(player.transform.position.x, GameManager.Main._highestHeight);
@@ -66,8 +54,6 @@ public class DamageColider : MonoBehaviour
         }
         if (collision.GetComponent<Cloud>())
         {
-            //Debug.Log("destroy");
-            //Destroy(collision.gameObject);
         }
     }
 }
