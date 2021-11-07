@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
             int i = Random.Range(0,2);
             windDirection = a[i];
             activateWindField.Invoke();
-            activateWindHeight += 25;
+            activateWindHeight += 75;
         }
     }
 

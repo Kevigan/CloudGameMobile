@@ -14,7 +14,8 @@ public class TemporaryEquipment : MonoBehaviour
             Debug.Log(hasTempEquipOn);
         if (hasTempEquipOn)
         {
-            player.SetForce(new Vector2(0, additionalSpeed));
+            player.SetYForce(additionalSpeed);
+            //player.SetForce(new Vector2(player.Velocity.x, additionalSpeed));
         }
     }
 
