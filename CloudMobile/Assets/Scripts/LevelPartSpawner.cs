@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class LevelPartSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject levelPartPrefab;
     private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 10f;
 
     [SerializeField] private PlayerCharacter2D player;
@@ -25,7 +26,8 @@ public class LevelPartSpawner : MonoBehaviour
             if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART)
             {
                 string tag = "a";
-                GameObject newLevelPart = LevelPartPooler.Instance.SpawnFromPool(tag, lastEndPosition, Quaternion.identity);
+                //GameObject newLevelPart = LevelPartPooler.Instance.SpawnFromPool(tag, lastEndPosition, Quaternion.identity);
+                GameObject newLevelPart = Instantiate(levelPartPrefab, lastEndPosition, Quaternion.identity);
                 //onSpawnClouds.Invoke();
                 lastEndPosition = new Vector3(newLevelPart.transform.position.x, newLevelPart.transform.position.y + 10f);
             }

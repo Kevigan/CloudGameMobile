@@ -4465,6 +4465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPartPooler
       objectReference: {fileID: 0}
+    - target: {fileID: 5667428668308914846, guid: 8de9f2c3670eb3c49b812dc86e8c4397, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8de9f2c3670eb3c49b812dc86e8c4397, type: 3}
 --- !u!1001 &5850969770951959338
@@ -4718,6 +4722,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1717763895}
+    - target: {fileID: 6667877137594674126, guid: a7a4d898b895e7f478e50eadd66ce084, type: 3}
+      propertyPath: levelPartPrefab
+      value: 
+      objectReference: {fileID: 7193180762076963139, guid: 5717bd8b6002d8540b454ce711abc39c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a4d898b895e7f478e50eadd66ce084, type: 3}
 --- !u!1001 &7133480594024208190

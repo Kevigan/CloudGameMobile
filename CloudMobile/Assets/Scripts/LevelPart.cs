@@ -35,7 +35,9 @@ public class LevelPart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Camera.main.transform.position.y + 75 < transform.position.y) gameObject.SetActive(false);
+        if (Camera.main.transform.position.y > transform.position.y +25) {
+        Destroy(gameObject) /*gameObject.SetActive(false)*/;
+        }
     }
     
 
@@ -46,7 +48,7 @@ public class LevelPart : MonoBehaviour
         {
             GameObject cloud = CloudPooler.Instance.SpawnFromPool(RandomCloud(i).ToString(), pos.position, Quaternion.identity);
             cloud.GetComponentInChildren<Cloud>().gameObject.SetActive(true);
-            cloud.transform.parent = gameObject.transform;
+            //cloud.transform.parent = gameObject.transform;
             cloud.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
         }
     }
