@@ -59,6 +59,7 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Main.ChooseSound(SoundType.backGround, true);
         GameManager.Main.UpdateScore();
         SetYForce(3);
         lastHeightPoint = (int)transform.position.y;

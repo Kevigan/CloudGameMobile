@@ -223,6 +223,7 @@ public class Cloud : MonoBehaviour
             if (GameManager.Main.GameState != GameState.LevelFinished)
             {
                 jumpAmount--;
+                SoundManager.Main.ChooseSound(SoundType.playerJump);
                 UpdateText();
                 CheckJumps();
                 enteredCloud = false;
