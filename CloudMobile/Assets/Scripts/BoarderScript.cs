@@ -10,13 +10,25 @@ public class BoarderScript : MonoBehaviour
     [SerializeField] private bool rightBoarder;
 
     Vector3 cameraPos = Vector3.zero;
+
+    private void OnValidate()
+    {
+        float cameraWidth = Screen.width;
+        //if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + 100, transform.position.y));
+        //if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, transform.position.y));
+        if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + (cameraWidth / 10), transform.position.y));
+        if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-(cameraWidth / 10), transform.position.y));
+
+        transform.position = cameraPos;
+    }
+
     private void Start()
     {
         float cameraWidth = Screen.width;
         //if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + 100, transform.position.y));
         //if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, transform.position.y));
-        if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + (cameraWidth / 12), transform.position.y));
-        if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-(cameraWidth / 12), transform.position.y));
+        if (rightBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(cameraWidth + (cameraWidth / 10), transform.position.y));
+        if (leftBoarder) cameraPos = Camera.main.ScreenToWorldPoint(new Vector3(-(cameraWidth / 10), transform.position.y));
 
         transform.position = cameraPos;
     }

@@ -28,6 +28,7 @@ public class Cloud : MonoBehaviour
     [Header("TempEquip")]
     [SerializeField] private TemporaryEquipment tempEquip;
 
+
     public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
 
@@ -39,6 +40,8 @@ public class Cloud : MonoBehaviour
 
     private bool firstActivation = false;
 
+    private Animator animator;
+
     private void OnValidate()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -47,6 +50,7 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         GenerateRandomCollectable();
         jumpAmountText.text = jumpAmount.ToString();
         SetJumpAmount();
@@ -101,6 +105,7 @@ public class Cloud : MonoBehaviour
     public void SetJumpAmount()
     {
         jumpAmount = _jumpAmount;
+        UpdateText();
     }
 
     private void UpdateColor()
@@ -150,15 +155,24 @@ public class Cloud : MonoBehaviour
     {
         if (jumpAmount <= 0)
         {
-            BoxCollider2D[] box = GetComponents<BoxCollider2D>();
-            foreach (BoxCollider2D col in box)
-            {
-                col.enabled = false;
-            }
-            spriteRenderer.enabled = false;
-
-            StartCoroutine(EnableCloud());
+            //BoxCollider2D[] box = GetComponents<BoxCollider2D>();
+            //foreach (BoxCollider2D col in box)
+            //{
+            //    col.enabled = false;
+            //}
+            StartCoroutine(SetCloudInactive());
+            //SetJumpAmount();
+           // spriteRenderer.enabled = false;
+            //StartCoroutine(EnableCloud());
         }
+    }
+
+    IEnumerator SetCloudInactive()
+    {
+            animator.SetTrigger("Destroy");
+        yield return new WaitForSeconds(1f);
+        gameObject.transform.parent.transform.gameObject.SetActive(false);
+        SetJumpAmount();
     }
 
     private void ActiveColorehaviour()
@@ -206,14 +220,7 @@ public class Cloud : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D character)
-        //{
-        //    if (character.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
-        //    {
-        //        character.SetYForce(addJumpForce);
-        //        enteredCloud = true;
-        //    }
-        //}
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -237,6 +244,7 @@ public class Cloud : MonoBehaviour
         {
             if (player.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
             {
+                animator.SetTrigger("CloudSpring");
                 player.SetYForce(addJumpForce);
                 enteredCloud = true;
             }

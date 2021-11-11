@@ -16,12 +16,15 @@ public class PlayerCharacter2D : MonoBehaviour
     public float JumpForce { get => jumpForce; set { jumpForce = value; } }
 
     [SerializeField] private float speed = 5f;
+    [Header("TouchInput")]
     [Range(0, 2)]
     [SerializeField] private float xMoveAdjustment;
 
     [SerializeField] private float gravityMultipier = 5f;
+    private float gravity = 9.81f;
 
-    [Range(1, 2)]
+    [Header("Gyroscope")]
+    [Range(1, 3)]
     [SerializeField] private float acceloratorSpeed;
 
     public bool YVelocityIsActive { get; private set; } = true;
@@ -51,6 +54,8 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private int lastHeightPoint;
 
+    private Animator animator;
+
 
     private void Awake()
     {
@@ -59,6 +64,8 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         SoundManager.Main.ChooseSound(SoundType.backGround, true);
         GameManager.Main.UpdateScore();
         SetYForce(3);
@@ -71,6 +78,7 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("YSpeed", velocity.y);
         if (GameManager.Main.GyroScopeInput) GyroscopeInput();
         if (GameManager.Main.TouchInput) TouchInput();
         HandleHoehenmeter();
@@ -146,12 +154,25 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         if (!collision.Grounded)
         {
-            velocity.y -= 9.81f * Time.fixedDeltaTime * gravityMultipier;
+            velocity.y -= gravity * Time.fixedDeltaTime * gravityMultipier;
             if (velocity.y < -2.5f) velocity.y = -2.5f;
         }
         else if (velocity.y < 0)
         {
             velocity.y = 0;
+        }
+    }
+
+    public void SetRigid(bool value)
+    {
+        if (value)
+        {
+            rigid.constraints = RigidbodyConstraints2D.None;
+            
+        }
+        else
+        {
+            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

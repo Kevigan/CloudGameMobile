@@ -10,7 +10,6 @@ public class StartMenuUI : MonoBehaviour
     void Start()
     {
         if (PlayerPrefs.HasKey("Car")) 
-        Debug.Log("haskey");
             highScoreText.text = PlayerPrefs.GetInt("Car").ToString();
     }
 
