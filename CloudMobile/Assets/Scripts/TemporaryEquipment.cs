@@ -15,15 +15,12 @@ public class TemporaryEquipment : MonoBehaviour
         if (hasTempEquipOn)
         {
             player.SetYForce(additionalSpeed);
-            //player.SetForce(new Vector2(player.Velocity.x, additionalSpeed));
         }
     }
 
     IEnumerator Timer()
     {
-        Debug.Log("start");
         yield return new WaitForSeconds(3);
-        Debug.Log("end");
         hasTempEquipOn = false;
         Destroy(gameObject);
     }
@@ -35,6 +32,7 @@ public class TemporaryEquipment : MonoBehaviour
             transform.parent = player.transform;
             hasTempEquipOn = true;
             StartCoroutine(Timer());
+            player.SetInvincibleTimer(3);
             this.player = player;
         }
     }

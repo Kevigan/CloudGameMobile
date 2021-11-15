@@ -924,7 +924,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.4481132, g: 0.6627358, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.78039217, g: 0.80784315, b: 0.91764706, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1606,6 +1606,7 @@ MonoBehaviour:
   - {fileID: 1749481879}
   - {fileID: 359103585}
   - {fileID: 2059182642}
+  blueBackground: {r: 0.78039217, g: 0.80784315, b: 0.91764706, a: 0}
 --- !u!114 &1579798823
 MonoBehaviour:
   m_ObjectHideFlags: 0

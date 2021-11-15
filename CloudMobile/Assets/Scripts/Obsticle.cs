@@ -16,6 +16,7 @@ public class Obsticle : MonoBehaviour
         GameManager.Main.ChangeGameState(GameState.Playing);
         player.transform.position = new Vector3(player.transform.position.x, GameManager.Main._highestHeight);
         player.SetYForce(katapultForce);
+        player.SetInvincibleTimer(1);
         timerStarted = true;
         Destroy(gameObject);
     }
@@ -36,6 +37,7 @@ public class Obsticle : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
+            if(!player.IsInvincible)
             StartCoroutine(timer2(player));
         }
     }

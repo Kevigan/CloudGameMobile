@@ -56,6 +56,10 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private Animator animator;
 
+    private bool isInvincible = false;
+    public bool IsInvincible { get => isInvincible; set { isInvincible = value; } }
+    private float invincibleTime = 0f;
+
 
     private void Awake()
     {
@@ -65,7 +69,6 @@ public class PlayerCharacter2D : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
         SoundManager.Main.ChooseSound(SoundType.backGround, true);
         GameManager.Main.UpdateScore();
         SetYForce(3);
@@ -74,6 +77,7 @@ public class PlayerCharacter2D : MonoBehaviour
         GameManager.Main.ChangeGameState(GameState.Playing);
         collisionDetection = GetComponent<CollisionDetection>();
         rigid = GetComponent<Rigidbody2D>();
+        SetInvincibleTimer(1);
     }
 
     private void Update()
@@ -83,6 +87,7 @@ public class PlayerCharacter2D : MonoBehaviour
         if (GameManager.Main.TouchInput) TouchInput();
         HandleHoehenmeter();
         collisionDetection.HandleCollision();
+        InvincibleTimer();
     }
     private void FixedUpdate()
     {
@@ -102,6 +107,30 @@ public class PlayerCharacter2D : MonoBehaviour
             GameManager.Main.UpdateScore();
         }
     }
+
+    public void SetInvincibleTimer(int time)
+    {
+        isInvincible = true;
+        invincibleTime = time;
+    }
+
+    public void InvincibleTimer()
+    {
+        if(invincibleTime > 0)
+        {
+            invincibleTime -= Time.deltaTime;
+        }else if(invincibleTime < 0)
+        {
+            IsInvincible = false;
+            invincibleTime = 0;
+        }
+    }
+
+    //public IEnumerator InvincibleTimer(int time)
+    //{
+    //    yield return new WaitForSeconds(time);
+    //    isInvincible = false; ;
+    //}
 
     private void HandleHoehenmeter()
     {

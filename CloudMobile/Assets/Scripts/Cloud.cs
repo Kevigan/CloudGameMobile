@@ -45,7 +45,7 @@ public class Cloud : MonoBehaviour
     private void OnValidate()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        UpdateColor();
+        //UpdateColor();
     }
 
     private void Start()
@@ -82,8 +82,8 @@ public class Cloud : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Main.GameState == GameState.Playing)
-            ActiveColorehaviour();
+        //if (GameManager.Main.GameState == GameState.Playing)
+            //ActiveColorehaviour();
     }
 
     private void GenerateRandomCollectable()

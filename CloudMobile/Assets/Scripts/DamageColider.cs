@@ -28,6 +28,7 @@ public class DamageColider : MonoBehaviour
         GameManager.Main.ChangeGameState(GameState.Playing);
         player.transform.position = new Vector3(player.transform.position.x, GameManager.Main._highestHeight);
         player.SetYForce(katapultForce);
+        player.SetInvincibleTimer(1);
         timerStarted = true;
         justExited = false;
     }
