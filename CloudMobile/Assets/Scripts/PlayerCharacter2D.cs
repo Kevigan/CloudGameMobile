@@ -16,6 +16,8 @@ public class PlayerCharacter2D : MonoBehaviour
     public float JumpForce { get => jumpForce; set { jumpForce = value; } }
 
     [SerializeField] private float speed = 5f;
+    [SerializeField] private ParticleSystem jetPackParticle;
+    [SerializeField] private bool gyroJetPack;
     [Header("TouchInput")]
     [Range(0, 2)]
     [SerializeField] private float xMoveAdjustment;
@@ -211,6 +213,18 @@ public class PlayerCharacter2D : MonoBehaviour
         if (GameManager.Main.GameState != GameState.LevelFinished)
             velocity.x = Input.acceleration.x * acceloratorSpeed;
     }
+    private void GyroscopeJetPackParticle()
+    {
+        if(velocity.x > 0 && !gyroJetPack)
+        {
+            jetPackParticle.Play();
+            gyroJetPack = true;
+        }else if(velocity.x <= 0 && gyroJetPack)
+        {
+            gyroJetPack = false;
+            jetPackParticle.Stop();
+        }
+    }
 
     private void TouchInput()
     {
@@ -226,6 +240,7 @@ public class PlayerCharacter2D : MonoBehaviour
                 {
                     moveAllowed = true;
                 }
+                    jetPackParticle.Play() ;
             }
             if (touch.phase == TouchPhase.Moved)
             {
@@ -237,6 +252,7 @@ public class PlayerCharacter2D : MonoBehaviour
             if (touch.phase == TouchPhase.Ended)
             {
                 if (!movingLeft && !movingRight) moveDirection = Vector2.zero;
+                jetPackParticle.Stop();
                 moveAllowed = false;
             }
         }
