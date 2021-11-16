@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 1760556357982067715, guid: 9fde7d75800b3154bb21327e69dfee19, type: 3}
   spawnPoint: {fileID: 753863457694151105}
   tempEquip: {fileID: 7948807970646716329, guid: ed0dc9c199f6a446e91b162d256132a7, type: 3}
+  boxCollider: {fileID: 1515889502612677379}
 --- !u!95 &5325102110035259323
 Animator:
   serializedVersion: 3

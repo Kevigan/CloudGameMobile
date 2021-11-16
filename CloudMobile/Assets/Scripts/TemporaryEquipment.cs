@@ -12,9 +12,10 @@ public class TemporaryEquipment : MonoBehaviour
     private void FixedUpdate()
     {
             Debug.Log(hasTempEquipOn);
-        if (hasTempEquipOn)
+        if (hasTempEquipOn && GameManager.Main.GameState == GameState.Playing)
         {
             player.SetYForce(additionalSpeed);
+            if (GameManager.Main.GameState == GameState.LevelFinished) Destroy(gameObject);
         }
     }
 

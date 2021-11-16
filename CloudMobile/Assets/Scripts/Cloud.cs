@@ -31,6 +31,7 @@ public class Cloud : MonoBehaviour
 
     public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
+    [SerializeField]private BoxCollider2D boxCollider;
 
     private int jumpAmount;
 
@@ -50,6 +51,7 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
+        boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         GenerateRandomCollectable();
         jumpAmountText.text = jumpAmount.ToString();
@@ -247,6 +249,10 @@ public class Cloud : MonoBehaviour
                 animator.SetTrigger("CloudSpring");
                 player.SetYForce(addJumpForce);
                 enteredCloud = true;
+            }
+            if(GameManager.Main.GameState == GameState.LevelFinished)
+            {
+                boxCollider.isTrigger = true;
             }
         }
     }
