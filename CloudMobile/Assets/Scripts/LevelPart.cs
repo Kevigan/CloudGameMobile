@@ -7,6 +7,15 @@ public class LevelPart : MonoBehaviour
 {
     [SerializeField] private Transform[] cloudPositions;
     [SerializeField] private Transform[] obsticlePositions;
+    [Tooltip("0-10")]
+    [SerializeField] private int whiteCloudChance = 7;
+
+    [Tooltip("0-10")]
+    [SerializeField] private int redCloudChance;
+    [Tooltip("0-10")]
+    [SerializeField] private int greenCloudChance;
+    [Tooltip("0-10")]
+    [SerializeField] private int blueCloudChance;
 
     [SerializeField] private GameObject obsticlePrefab;
     private bool started = false;
@@ -18,7 +27,7 @@ public class LevelPart : MonoBehaviour
     {
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         SpawnClouds();
-        SpawnObsticles();
+        //SpawnObsticles();
         started = true;
     }
 
@@ -30,18 +39,18 @@ public class LevelPart : MonoBehaviour
         }
     }
 
-    public void SpawnObsticles()
-    {
-        foreach (Transform pos in obsticlePositions)
-        {
-            int num = Random.Range(0, 10);
-            if (num >= 7)
-            {
-                GameObject obsticle = Instantiate(obsticlePrefab, pos.position, Quaternion.identity);
-                obsticle.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
-            }
-        }
-    }
+    //public void SpawnObsticles()
+    //{
+    //    foreach (Transform pos in obsticlePositions)
+    //    {
+    //        int num = Random.Range(0, 10);
+    //        if (num >= 7)
+    //        {
+    //            GameObject obsticle = Instantiate(obsticlePrefab, pos.position, Quaternion.identity);
+    //            obsticle.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
+    //        }
+    //    }
+    //}
 
     public void SpawnClouds()
     {
@@ -71,12 +80,31 @@ public class LevelPart : MonoBehaviour
         }
         else if (i % 2 == 0)
         {
-            tag = (CloudNames)Random.Range(1, 3 + 1);
+            int z = Random.Range(0, 11);
+            int x = redCloudChance + blueCloudChance + greenCloudChance;
+            if (z == 0 || z == 1 || z == 2)
+            {
+                tag = CloudNames.RedCloud;
+            }
+            else if (z == 3 || z == 4 || z == 5)
+            {
+                tag = CloudNames.BlackCloud;
+            }
+            else
+            {
+                tag = CloudNames.GreenCloud;
+            }
         }
 
         return tag;
     }
+
+        
+    
+
+
 }
+
 public enum CloudNames
 {
     WhiteCloud,

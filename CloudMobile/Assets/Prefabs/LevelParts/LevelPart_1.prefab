@@ -454,6 +454,10 @@ MonoBehaviour:
   obsticlePositions:
   - {fileID: 3891542721697550017}
   - {fileID: 1478930008178416386}
+  whiteCloudChance: 7
+  redCloudChance: 2
+  greenCloudChance: 5
+  blueCloudChance: 3
   obsticlePrefab: {fileID: 8429106971514175512, guid: 8c29dd3c7b1f6b24cae85ac54532f943, type: 3}
 --- !u!1 &7193180763003026280
 GameObject:

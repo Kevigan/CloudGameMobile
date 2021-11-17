@@ -16,6 +16,10 @@ public class Cloud : MonoBehaviour
     [SerializeField] private float addJumpForce = 5;
     [SerializeField] private bool moveVertical;
     [SerializeField] private bool moveHorizontal;
+    [SerializeField] private Transform[] obsticlePositions;
+    [SerializeField] private Transform[] cloudPositions;
+    [SerializeField] private GameObject obsticlePrefab;
+
 
     //[SerializeField] private Animator animator;
     [SerializeField] private TextMesh jumpAmountText;
@@ -31,7 +35,7 @@ public class Cloud : MonoBehaviour
 
     public int JumpAmount { get => jumpAmount; set => jumpAmount = value; }
 
-    [SerializeField]private BoxCollider2D boxCollider;
+    [SerializeField] private BoxCollider2D boxCollider;
 
     private int jumpAmount;
 
@@ -74,7 +78,11 @@ public class Cloud : MonoBehaviour
 
     private void OnEnable()
     {
-        if (firstActivation) GenerateRandomCollectable();
+        if (firstActivation)
+        {
+            SpawnObsticles();
+            GenerateRandomCollectable();
+        }
     }
 
     private void Update()
@@ -85,7 +93,7 @@ public class Cloud : MonoBehaviour
     private void FixedUpdate()
     {
         //if (GameManager.Main.GameState == GameState.Playing)
-            //ActiveColorehaviour();
+        //ActiveColorehaviour();
     }
 
     private void GenerateRandomCollectable()
@@ -97,7 +105,8 @@ public class Cloud : MonoBehaviour
         {
             Collectables _collectables = Instantiate(collectables[number], spawnPoint.position, Quaternion.identity);
             _collectables.transform.parent = gameObject.transform;
-        }else if (number2 < 10)
+        }
+        else if (number2 < 10)
         {
             TemporaryEquipment item = Instantiate(tempEquip, spawnPoint.position, Quaternion.identity);
             item.transform.parent = gameObject.transform;
@@ -152,6 +161,22 @@ public class Cloud : MonoBehaviour
         }
         spriteRenderer.enabled = true;
     }
+    public void SpawnObsticles()
+    {
+       
+        
+            int num = Random.Range(0, 2);
+            if (num <= 0)
+            {
+                GameObject obsticle = Instantiate(obsticlePrefab,obsticlePositions[0].position , Quaternion.identity);
+            obsticle.transform.position = new Vector3(obsticle.transform.position.x, obsticle.transform.position.y);
+        }
+        else
+        {
+            GameObject obsticle = Instantiate(obsticlePrefab, obsticlePositions[1].position, Quaternion.identity);
+        }
+        
+    }
 
     private void CheckJumps()
     {
@@ -164,14 +189,14 @@ public class Cloud : MonoBehaviour
             //}
             StartCoroutine(SetCloudInactive());
             //SetJumpAmount();
-           // spriteRenderer.enabled = false;
+            // spriteRenderer.enabled = false;
             //StartCoroutine(EnableCloud());
         }
     }
 
     IEnumerator SetCloudInactive()
     {
-            animator.SetTrigger("Destroy");
+        animator.SetTrigger("Destroy");
         yield return new WaitForSeconds(1f);
         gameObject.transform.parent.transform.gameObject.SetActive(false);
         SetJumpAmount();
@@ -222,7 +247,7 @@ public class Cloud : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -250,7 +275,7 @@ public class Cloud : MonoBehaviour
                 player.SetYForce(addJumpForce);
                 enteredCloud = true;
             }
-            if(GameManager.Main.GameState == GameState.LevelFinished)
+            if (GameManager.Main.GameState == GameState.LevelFinished)
             {
                 boxCollider.isTrigger = true;
             }

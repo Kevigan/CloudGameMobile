@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 1515889502612677383}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &151205216072207855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7354924910289357441}
+  m_Layer: 0
+  m_Name: Obsticle pos 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7354924910289357441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151205216072207855}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 0.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1515889502612677383}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1515889502234405886
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +127,8 @@ Transform:
   m_Children:
   - {fileID: 5941203084970280293}
   - {fileID: 753863457694151105}
+  - {fileID: 7354924910289357441}
+  - {fileID: 3436567736333180090}
   m_Father: {fileID: 1515889502234405887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,12 +289,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.75
-  addJumpForce: 2
+  addJumpForce: 3.5
   moveVertical: 0
   moveHorizontal: 1
+  obsticlePositions:
+  - {fileID: 7354924910289357441}
+  - {fileID: 3436567736333180090}
+  cloudPositions: []
+  obsticlePrefab: {fileID: 8429106971514175512, guid: 8c29dd3c7b1f6b24cae85ac54532f943, type: 3}
   jumpAmountText: {fileID: 4584139488605436136}
   color: 0
-  _jumpAmount: 3
+  _jumpAmount: 1
   collectables:
   - {fileID: 344577866378045936, guid: c339e8c1424645340a8dfeb2565cea00, type: 3}
   - {fileID: 138387462150724135, guid: 364aa8c384331d24ca875e4fe62fa745, type: 3}
@@ -289,6 +326,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2685011080345308912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3436567736333180090}
+  m_Layer: 0
+  m_Name: 'Obsticle pos 2 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3436567736333180090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685011080345308912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.564, y: 0.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1515889502612677383}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5484140228150111225
 GameObject:
   m_ObjectHideFlags: 0

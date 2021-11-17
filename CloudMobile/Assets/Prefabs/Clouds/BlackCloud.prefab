@@ -96,6 +96,36 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!1 &540745688817851534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8070783206847388957}
+  m_Layer: 8
+  m_Name: 'Obstacle Pos 1 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8070783206847388957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540745688817851534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.25, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 773497581292751224}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773497581115277697
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,8 +171,8 @@ GameObject:
   - component: {fileID: 773497581292751229}
   - component: {fileID: 773497581292751226}
   - component: {fileID: 773497581292751230}
-  - component: {fileID: 773497581292751227}
   - component: {fileID: 6507810441070953539}
+  - component: {fileID: 8645557536201214765}
   m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
@@ -163,6 +193,8 @@ Transform:
   m_Children:
   - {fileID: 9150630413426446383}
   - {fileID: 6771673563123868180}
+  - {fileID: 8070783206847388957}
+  - {fileID: 5899996600928626198}
   m_Father: {fileID: 773497581115277696}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -310,32 +342,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &773497581292751227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773497581292751225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54dd85e7ef9f80b458a63777bc624d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  addJumpForce: 3
-  moveVertical: 0
-  moveHorizontal: 1
-  jumpAmountText: {fileID: 2520823626651157987}
-  color: 5
-  _jumpAmount: 3
-  collectables:
-  - {fileID: 344577866378045936, guid: c339e8c1424645340a8dfeb2565cea00, type: 3}
-  - {fileID: 138387462150724135, guid: 364aa8c384331d24ca875e4fe62fa745, type: 3}
-  - {fileID: 1760556357982067715, guid: 9fde7d75800b3154bb21327e69dfee19, type: 3}
-  spawnPoint: {fileID: 6771673563123868180}
-  tempEquip: {fileID: 7948807970646716329, guid: ed0dc9c199f6a446e91b162d256132a7, type: 3}
-  boxCollider: {fileID: 773497581292751228}
 --- !u!95 &6507810441070953539
 Animator:
   serializedVersion: 3
@@ -355,6 +361,67 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8645557536201214765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773497581292751225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54dd85e7ef9f80b458a63777bc624d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  addJumpForce: 3
+  moveVertical: 0
+  moveHorizontal: 0
+  obsticlePositions:
+  - {fileID: 8070783206847388957}
+  - {fileID: 5899996600928626198}
+  cloudPositions: []
+  obsticlePrefab: {fileID: 8429106971514175512, guid: 8c29dd3c7b1f6b24cae85ac54532f943, type: 3}
+  jumpAmountText: {fileID: 2520823626651157987}
+  color: 0
+  _jumpAmount: 1
+  collectables:
+  - {fileID: 344577866378045936, guid: c339e8c1424645340a8dfeb2565cea00, type: 3}
+  - {fileID: 138387462150724135, guid: 364aa8c384331d24ca875e4fe62fa745, type: 3}
+  - {fileID: 1760556357982067715, guid: 9fde7d75800b3154bb21327e69dfee19, type: 3}
+  spawnPoint: {fileID: 6771673563123868180}
+  tempEquip: {fileID: 7948807970646716329, guid: ed0dc9c199f6a446e91b162d256132a7, type: 3}
+  boxCollider: {fileID: 773497581292751228}
+--- !u!1 &4731700656718329063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5899996600928626198}
+  m_Layer: 8
+  m_Name: Obstacle Pos 1  (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5899996600928626198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731700656718329063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.24, y: 1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 773497581292751224}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8853839698641068923
 GameObject:
   m_ObjectHideFlags: 0
