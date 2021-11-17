@@ -31,9 +31,10 @@ public class StartUICloudSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Cloud>() is Cloud cloud)
+        if(collision.GetComponent<CloudUI>() is CloudUI cloud)
         {
-            Destroy(cloud);
+            Debug.Log("cloud");
+            Destroy(cloud.gameObject);
         }
     }
 }

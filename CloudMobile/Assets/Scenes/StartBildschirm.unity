@@ -397,7 +397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1705,15 +1705,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 1b336776ff9919f4eabae5e1913bafcc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cfec6fe707f9358448262444d64f1a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.1692308, y: 1.5384616}
+  m_Size: {x: 1.0153847, y: 1.0153847}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1552402397
@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2589,7 +2589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3029,7 +3029,7 @@ PrefabInstance:
     - target: {fileID: 6830536733066320300, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+      objectReference: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
     - target: {fileID: 6830536733066320306, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -3109,7 +3109,7 @@ PrefabInstance:
     - target: {fileID: 6830536733622856450, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+      objectReference: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
     - target: {fileID: 6830536733796840053, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3309,6 +3309,6 @@ PrefabInstance:
     - target: {fileID: 6830536734947697475, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 89a16fde33f6ae2419c8c622ade1de8f, type: 3}
+      objectReference: {fileID: 21300000, guid: f83a994588a98734cba352333166e3c4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e96ea669bc06ff43a7d8b3153c6c7f2, type: 3}

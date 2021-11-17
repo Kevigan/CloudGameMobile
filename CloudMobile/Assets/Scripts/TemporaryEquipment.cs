@@ -6,6 +6,7 @@ public class TemporaryEquipment : MonoBehaviour
 {
     [SerializeField] private float additionalSpeed = 2f;
     [SerializeField] private int time = 3;
+    
     private bool hasTempEquipOn = false;
     private PlayerCharacter2D player;
 
@@ -15,8 +16,8 @@ public class TemporaryEquipment : MonoBehaviour
         if (hasTempEquipOn && GameManager.Main.GameState == GameState.Playing)
         {
             player.SetYForce(additionalSpeed);
-            if (GameManager.Main.GameState == GameState.LevelFinished) Destroy(gameObject);
         }
+        if (GameManager.Main.GameState == GameState.LevelFinished) Destroy(gameObject);
     }
 
     IEnumerator Timer()
@@ -31,6 +32,7 @@ public class TemporaryEquipment : MonoBehaviour
         if(collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
             transform.parent = player.transform;
+            transform.localPosition = player.JetPackPos.localPosition;
             hasTempEquipOn = true;
             StartCoroutine(Timer());
             player.SetInvincibleTimer(3);

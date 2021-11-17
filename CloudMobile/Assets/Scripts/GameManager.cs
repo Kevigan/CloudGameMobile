@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.LevelFinished:
                 UIManager.Main.ChangeUIState(UIState.LevelFinished);
+                //player.SetIdleAnimation();
                 break;
         }
         gameState = newState;

@@ -17,6 +17,7 @@ public class PlayerCharacter2D : MonoBehaviour
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private ParticleSystem jetPackParticle;
+    [SerializeField] private ParticleSystem jetPackParticle2;
     [SerializeField] private bool gyroJetPack;
     [Header("TouchInput")]
     [Range(0, 2)]
@@ -57,11 +58,14 @@ public class PlayerCharacter2D : MonoBehaviour
     private int lastHeightPoint;
 
     private Animator animator;
+    
 
     private bool isInvincible = false;
     public bool IsInvincible { get => isInvincible; set { isInvincible = value; } }
     private float invincibleTime = 0f;
 
+    [SerializeField] private Transform jetPackPos;
+    public Transform JetPackPos { get => jetPackPos; }
 
     private void Awake()
     {
@@ -98,6 +102,7 @@ public class PlayerCharacter2D : MonoBehaviour
             CalculateYVelocity();
             ApplyVelocity();
         }
+        if (GameManager.Main.GameState == GameState.LevelFinished) animator.SetBool("Idle", true);
         CalculateDistancePoints();
     }
     private void CalculateDistancePoints()
@@ -211,7 +216,19 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         //moveDirection.x = Input.acceleration.x * acceloratorSpeed;
         if (GameManager.Main.GameState != GameState.LevelFinished)
+        {
+            Debug.Log(Input.acceleration);
             velocity.x = Input.acceleration.x * acceloratorSpeed;
+            if (velocity.x > 0.3f)
+                jetPackParticle.Play();
+            else if (velocity.x < -.3f)
+                jetPackParticle2.Play();
+            else
+            {
+                jetPackParticle.Stop();
+                jetPackParticle2.Stop();
+            }
+        }
     }
     private void GyroscopeJetPackParticle()
     {
@@ -240,7 +257,10 @@ public class PlayerCharacter2D : MonoBehaviour
                 {
                     moveAllowed = true;
                 }
+                if(velocity.x > 0)
                     jetPackParticle.Play() ;
+                if (velocity.x < 0)
+                    jetPackParticle2.Play();
             }
             if (touch.phase == TouchPhase.Moved)
             {
@@ -253,6 +273,7 @@ public class PlayerCharacter2D : MonoBehaviour
             {
                 if (!movingLeft && !movingRight) moveDirection = Vector2.zero;
                 jetPackParticle.Stop();
+                jetPackParticle2.Stop();
                 moveAllowed = false;
             }
         }
@@ -280,6 +301,11 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         movingRight = false;
         velocity.x = 0;
+    }
+
+    public void SetIdleAnimation()
+    {
+        animator.SetBool("Idle", true);
     }
 }
 
