@@ -55,6 +55,7 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
+        SpawnObsticles();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         GenerateRandomCollectable();
@@ -80,7 +81,7 @@ public class Cloud : MonoBehaviour
     {
         if (firstActivation)
         {
-            SpawnObsticles();
+            // SpawnObsticles();
             GenerateRandomCollectable();
         }
     }
@@ -163,19 +164,22 @@ public class Cloud : MonoBehaviour
     }
     public void SpawnObsticles()
     {
-       
-        
+        int a = Random.Range(0, 10);
+        if (a > 8)
+        {
+
             int num = Random.Range(0, 2);
             if (num <= 0)
             {
-                GameObject obsticle = Instantiate(obsticlePrefab,obsticlePositions[0].position , Quaternion.identity);
-            obsticle.transform.position = new Vector3(obsticle.transform.position.x, obsticle.transform.position.y);
+                GameObject obsticle = Instantiate(obsticlePrefab, obsticlePositions[0].position, Quaternion.identity);
+                obsticle.transform.position = new Vector3(obsticle.transform.position.x, obsticle.transform.position.y);
+            }
+            else
+            {
+                GameObject obsticle = Instantiate(obsticlePrefab, obsticlePositions[1].position, Quaternion.identity);
+            }
         }
-        else
-        {
-            GameObject obsticle = Instantiate(obsticlePrefab, obsticlePositions[1].position, Quaternion.identity);
-        }
-        
+
     }
 
     private void CheckJumps()

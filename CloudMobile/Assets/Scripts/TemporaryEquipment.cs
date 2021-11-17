@@ -6,7 +6,8 @@ public class TemporaryEquipment : MonoBehaviour
 {
     [SerializeField] private float additionalSpeed = 2f;
     [SerializeField] private int time = 3;
-    
+    [SerializeField] private ParticleSystem ps;
+
     private bool hasTempEquipOn = false;
     private PlayerCharacter2D player;
 
@@ -33,6 +34,9 @@ public class TemporaryEquipment : MonoBehaviour
         {
             transform.parent = player.transform;
             transform.localPosition = player.JetPackPos.localPosition;
+
+            ps.Play();
+
             hasTempEquipOn = true;
             StartCoroutine(Timer());
             player.SetInvincibleTimer(3);

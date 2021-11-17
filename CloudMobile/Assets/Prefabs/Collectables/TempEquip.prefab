@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.38, y: 7.4, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 970947261124620236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: de4f6a7e31f4cfd4ba0a40f41638093a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalSpeed: 3
   time: 3
+  ps: {fileID: 970947261124620238}
 --- !u!61 &7948807970646716330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +118,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.73846155, y: 0.8}
+    oldSize: {x: 0.384, y: 0.416}
     newSize: {x: 0.14, y: 0.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,3 +127,70 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 0.18}
   m_EdgeRadius: 0
+--- !u!1001 &3171327729457009339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7948807970646716335}
+    m_Modifications:
+    - target: {fileID: 2412714060863323496, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_Name
+      value: RocketPartricles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.127
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+--- !u!4 &970947261124620236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2412714060863323511, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+  m_PrefabInstance: {fileID: 3171327729457009339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &970947261124620238 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2412714060863323509, guid: 069be07903595a54c87363d3360b6cc5, type: 3}
+  m_PrefabInstance: {fileID: 3171327729457009339}
+  m_PrefabAsset: {fileID: 0}

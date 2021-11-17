@@ -37,8 +37,8 @@ public class Obsticle : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
-           // if(!player.IsInvincible)
-            //StartCoroutine(timer2(player));
+            if(!player.IsInvincible)
+            StartCoroutine(timer2(player));
         }
     }
 }
