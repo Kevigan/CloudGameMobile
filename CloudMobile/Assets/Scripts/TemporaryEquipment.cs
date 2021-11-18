@@ -23,7 +23,7 @@ public class TemporaryEquipment : MonoBehaviour
 
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(time);
         hasTempEquipOn = false;
         Destroy(gameObject);
     }
@@ -39,7 +39,7 @@ public class TemporaryEquipment : MonoBehaviour
 
             hasTempEquipOn = true;
             StartCoroutine(Timer());
-            player.SetInvincibleTimer(3);
+            player.SetInvincibleTimer(time);
             this.player = player;
         }
     }
