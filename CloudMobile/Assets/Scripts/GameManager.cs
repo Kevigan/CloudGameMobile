@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
     public static event OnHeightReached activateWindField;
 
     public int windDirection;
+
+    public int floatingScoreText;
 
     private void Awake()
     {
@@ -171,7 +174,6 @@ public class GameManager : MonoBehaviour
 
     public void SaveHighScore()
     {
-            
         if (GameManager.Main.ActualHighScore > GameManager.Main.HighScore)
         {
             HighScore = ActualHighScore;

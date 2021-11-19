@@ -42,5 +42,9 @@ public class TemporaryEquipment : MonoBehaviour
             player.SetInvincibleTimer(time);
             this.player = player;
         }
+        if(collision.GetComponent<Obsticle>() is Obsticle obj)
+        {
+            Destroy(obj.gameObject);
+        }
     }
 }

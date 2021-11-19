@@ -27,7 +27,7 @@ public class LevelPart : MonoBehaviour
     {
         screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
         SpawnClouds();
-        //SpawnObsticles();
+        SpawnObsticles();
         started = true;
     }
 
@@ -39,18 +39,18 @@ public class LevelPart : MonoBehaviour
         }
     }
 
-    //public void SpawnObsticles()
-    //{
-    //    foreach (Transform pos in obsticlePositions)
-    //    {
-    //        int num = Random.Range(0, 10);
-    //        if (num >= 7)
-    //        {
-    //            GameObject obsticle = Instantiate(obsticlePrefab, pos.position, Quaternion.identity);
-    //            obsticle.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
-    //        }
-    //    }
-    //}
+    public void SpawnObsticles()
+    {
+        foreach (Transform pos in obsticlePositions)
+        {
+            int num = Random.Range(0, 10);
+            if (num >= 5)
+            {
+                GameObject obsticle = Instantiate(obsticlePrefab, pos.position, Quaternion.identity);
+                obsticle.transform.position = new Vector3(CloudPosition(), pos.transform.position.y);
+            }
+        }
+    }
 
     public void SpawnClouds()
     {

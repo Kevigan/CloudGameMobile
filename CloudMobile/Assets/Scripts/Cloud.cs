@@ -55,7 +55,7 @@ public class Cloud : MonoBehaviour
 
     private void Start()
     {
-        SpawnObsticles();
+        //SpawnObsticles();
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         GenerateRandomCollectable();
@@ -169,7 +169,7 @@ public class Cloud : MonoBehaviour
         {
 
             int num = Random.Range(0, 2);
-            if (num <= 0)
+            if (num == 0)
             {
                 GameObject obsticle = Instantiate(obsticlePrefab, obsticlePositions[0].position, Quaternion.identity);
                 obsticle.transform.position = new Vector3(obsticle.transform.position.x, obsticle.transform.position.y);
@@ -187,15 +187,7 @@ public class Cloud : MonoBehaviour
     {
         if (jumpAmount <= 0)
         {
-            //BoxCollider2D[] box = GetComponents<BoxCollider2D>();
-            //foreach (BoxCollider2D col in box)
-            //{
-            //    col.enabled = false;
-            //}
             StartCoroutine(SetCloudInactive());
-            //SetJumpAmount();
-            // spriteRenderer.enabled = false;
-            //StartCoroutine(EnableCloud());
         }
     }
 

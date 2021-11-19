@@ -6,12 +6,14 @@ public class Collectables : MonoBehaviour
 {
     [SerializeField] private CollectableType type;
     [SerializeField] private int collectableValue = 100;
-    [SerializeField] private Sprite sprite
-        ;
-    
+    private int _collectableValue = 0;
+    [SerializeField]
+    private Sprite sprite;
+
 
     private SpriteRenderer spriteRenderer;
-    private int _collectableValue = 0;
+
+    [SerializeField] private GameObject floatingScoreTextPrefab;
 
     private void OnValidate()
     {
@@ -28,11 +30,13 @@ public class Collectables : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>())
         {
+            GameManager.Main.floatingScoreText = collectableValue;
+            Instantiate(floatingScoreTextPrefab, new Vector3(transform.position.x -1, transform.position.y) , Quaternion.identity);
             Destroy(gameObject);
             GameManager.Main.ActualHighScore += _collectableValue;
             GameManager.Main.UpdateScore();
         }
-        
+
     }
 }
 public enum CollectableType

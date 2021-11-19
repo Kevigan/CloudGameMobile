@@ -39,14 +39,14 @@ public class BoarderScript : MonoBehaviour
         {
             player.transform.position = new Vector3(oppositeBoarder.transform.position.x + distance, player.transform.position.y);
         }
-        if (collision.GetComponent<Cloud>() is Cloud cloud && leftBoarder)
+        if (collision.GetComponent<Obsticle>() is Obsticle obsticle && leftBoarder)
         {
             //cloud.transform.position = new Vector3(oppositeBoarder.transform.position.x + distance, cloud.transform.position.y);
-            cloud.TurnRight();
+            obsticle.TurnRight();
         }
-        if (collision.GetComponent<Cloud>() is Cloud cloud2 && rightBoarder)
+        if (collision.GetComponent<Obsticle>() is Obsticle obsticle2 && rightBoarder)
         {
-            cloud2.TurnLeft();
+            obsticle2.TurnLeft();
         }
     }
 }

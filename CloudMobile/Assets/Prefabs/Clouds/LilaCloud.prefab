@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773497581115277696}
   m_Layer: 8
-  m_Name: BlackCloud
+  m_Name: LilaCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
