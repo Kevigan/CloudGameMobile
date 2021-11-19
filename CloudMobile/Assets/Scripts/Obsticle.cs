@@ -20,7 +20,7 @@ public class Obsticle : MonoBehaviour
     IEnumerator PauseTimer(PlayerCharacter2D player)
     {
         yield return new WaitForSeconds(3);
-        player.SetRigid(false);
+        //player.SetRigid(false);
         GameManager.Main.ChangeGameState(GameState.Playing);
         player.transform.position = new Vector3(player.transform.position.x, GameManager.Main._highestHeight);
         player.SetYForce(katapultForce);
@@ -31,7 +31,7 @@ public class Obsticle : MonoBehaviour
     IEnumerator timer2(PlayerCharacter2D player)
     {
         yield return new WaitForSeconds(0);
-        player.SetRigid(true);
+        //player.SetRigid(true);
         GameManager.Main.Life--;
         justExited = true;
         if (GameManager.Main.GameState != GameState.Death)

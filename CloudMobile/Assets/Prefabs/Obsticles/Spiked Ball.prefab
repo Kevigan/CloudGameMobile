@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 8429106971514175508}
   - component: {fileID: 8429106971514175509}
   - component: {fileID: 1814282709880163751}
+  - component: {fileID: 3465967626660530670}
   m_Layer: 0
   m_Name: Spiked Ball
   m_TagString: Untagged
@@ -229,3 +230,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.19
+--- !u!95 &3465967626660530670
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429106971514175512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6423eb16fddfc1498b227cf21b715e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
