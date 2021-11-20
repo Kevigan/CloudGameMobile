@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
 
     public SoundResources resource;
 
+    AudioSource background;
+
     [SerializeField]
     [Range(0,1)]
     private float volume;
@@ -25,6 +27,7 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        background = gameObject.AddComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -61,6 +64,29 @@ public class SoundManager : MonoBehaviour
         source.Play();
         allSFXsources.Add(source);
     }
+    public void PlayNewBackgorund(AudioClip clip, bool loop = false)
+    {
+        background.clip = null;
+        background.clip = clip;
+        background.loop = loop;
+        background.volume = volume;
+        background.Play();
+    }
+
+    public void ChooseBackGroundMusic(BackGroundSound type, bool loop = false)
+    {
+        AudioClip clip = null;
+        switch (type)
+        {
+            case BackGroundSound.backGround:
+                clip = resource.backgroundMusic;
+                break;
+            case BackGroundSound.levelFinished:
+                clip = resource.levelFinished;
+                break;
+        }
+        PlayNewBackgorund(clip);
+    }
 
     public void ChooseSound(SoundType type, bool loop = false)
     {
@@ -76,15 +102,10 @@ public class SoundManager : MonoBehaviour
             case SoundType.enemyHit:
                 clip = resource.enemyHit;
                 break;
-            case SoundType.levelFinished:
-                clip = resource.levelFinished;
-                break;
             case SoundType.deathSound:
                 clip = resource.deathSound;
                 break;
-            case SoundType.backGround:
-                clip = resource.backgroundMusic;
-                break;
+            
         }
         PlayNewSound(clip);
     }
@@ -95,7 +116,11 @@ public enum SoundType
     playerJump,
     collect,
     enemyHit,
-    levelFinished,
     deathSound,
-    backGround
+}
+public enum BackGroundSound
+{
+    backGround,
+    levelFinished,
+
 }

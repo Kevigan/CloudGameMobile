@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndPoint : MonoBehaviour
 {
+    private bool endReached = false;
     private void Start()
     {
         transform.position = new Vector3(transform.position.x, GameManager.Main.endHeight);
@@ -12,8 +13,12 @@ public class EndPoint : MonoBehaviour
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
-            GameManager.Main.ChangeGameState(GameState.LevelFinished);
-            SoundManager.Main.ChooseSound(SoundType.levelFinished);
+            if (endReached == false)
+            {
+                endReached = true;
+                GameManager.Main.ChangeGameState(GameState.LevelFinished);
+                SoundManager.Main.ChooseBackGroundMusic(BackGroundSound.levelFinished);
+            }
         }
     }
 }

@@ -79,7 +79,7 @@ public class PlayerCharacter2D : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        SoundManager.Main.ChooseSound(SoundType.backGround, true);
+        SoundManager.Main.ChooseBackGroundMusic(BackGroundSound.backGround, true);
         GameManager.Main.UpdateScore();
         SetYForce(3);
         lastHeightPoint = (int)transform.position.y;
