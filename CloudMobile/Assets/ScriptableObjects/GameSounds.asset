@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be06bf639b2e984bb501ed8e3a85ee0, type: 3}
   m_Name: GameSounds
   m_EditorClassIdentifier: 
-  playerJump: {fileID: 0}
-  backgroundMusic: {fileID: 0}
-  backgroundMusic2: {fileID: 0}
-  collect: {fileID: 0}
-  enemyHit: {fileID: 0}
-  levelFinished: {fileID: 0}
-  deathSound: {fileID: 0}
+  playerJump: {fileID: 8300000, guid: 58bc6afc4ddd7514dbd9e0c7e405b89e, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: ce011b3520dc8dd4babd06a231120628, type: 3}
+  backgroundMusic2: {fileID: 8300000, guid: ce011b3520dc8dd4babd06a231120628, type: 3}
+  collect: {fileID: 8300000, guid: 562015f11ff87914a826c3aa6297438a, type: 3}
+  enemyHit: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+  levelFinished: {fileID: 8300000, guid: e1cee2dd9c6dba54cbf0252a22fb843a, type: 3}
+  deathSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
