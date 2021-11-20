@@ -33,6 +33,7 @@ public class EnemyHitBox : MonoBehaviour
                 player.SetYForce(jumpForce);
                 GameManager.Main.ActualHighScore += _collectableValue;
                 GameManager.Main.UpdateScore();
+                SoundManager.Main.ChooseSound(SoundType.enemyHit);
 
 
                 Destroy(transform.parent.gameObject);

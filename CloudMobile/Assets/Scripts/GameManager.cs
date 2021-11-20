@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             {
                 SaveHighScore();
                 ChangeGameState(GameState.Death);
+                SoundManager.Main.ChooseSound(SoundType.deathSound);
             }
         }
     }

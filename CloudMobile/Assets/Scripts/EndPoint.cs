@@ -13,6 +13,7 @@ public class EndPoint : MonoBehaviour
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
         {
             GameManager.Main.ChangeGameState(GameState.LevelFinished);
+            SoundManager.Main.ChooseSound(SoundType.levelFinished);
         }
     }
 }

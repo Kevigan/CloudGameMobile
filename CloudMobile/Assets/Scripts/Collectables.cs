@@ -35,6 +35,7 @@ public class Collectables : MonoBehaviour
             Destroy(gameObject);
             GameManager.Main.ActualHighScore += _collectableValue;
             GameManager.Main.UpdateScore();
+            SoundManager.Main.ChooseSound(SoundType.collect);
         }
 
     }
