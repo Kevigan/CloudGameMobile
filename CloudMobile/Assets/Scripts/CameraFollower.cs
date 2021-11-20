@@ -28,7 +28,7 @@ public class CameraFollower : MonoBehaviour
         {
             startLerp = true;
             starsActive = true;
-            starsPrefab.SetActive(true);
+            //starsPrefab.SetActive(true);
         }
         if (startLerp)
         {

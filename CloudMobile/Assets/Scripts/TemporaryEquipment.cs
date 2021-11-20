@@ -44,6 +44,7 @@ public class TemporaryEquipment : MonoBehaviour
         }
         if(collision.GetComponent<Obsticle>() is Obsticle obj)
         {
+            obj.GetComponentInChildren<EnemyHitBox>().PlayFloatingText();
             Destroy(obj.gameObject);
         }
     }

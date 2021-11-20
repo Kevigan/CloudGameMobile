@@ -14,6 +14,14 @@ public class EnemyHitBox : MonoBehaviour
         _collectableValue = collectableValue;
     }
 
+    public void PlayFloatingText()
+    {
+        GameManager.Main.floatingScoreText = collectableValue;
+        Instantiate(floatingScoreTextPrefab, new Vector3(transform.position.x - 1, transform.position.y), Quaternion.identity);
+        GameManager.Main.ActualHighScore += _collectableValue;
+        GameManager.Main.UpdateScore();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerCharacter2D>() is PlayerCharacter2D player)
