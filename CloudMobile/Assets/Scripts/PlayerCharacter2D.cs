@@ -67,6 +67,9 @@ public class PlayerCharacter2D : MonoBehaviour
     [SerializeField] private Transform jetPackPos;
     public Transform JetPackPos { get => jetPackPos; }
 
+    private SpriteRenderer sprite;
+    private bool facingRight = true;
+
     private void Awake()
     {
 
@@ -74,6 +77,7 @@ public class PlayerCharacter2D : MonoBehaviour
 
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         SoundManager.Main.ChooseSound(SoundType.backGround, true);
         GameManager.Main.UpdateScore();
@@ -160,6 +164,19 @@ public class PlayerCharacter2D : MonoBehaviour
 
         velocity.y = YVelocityIsActive ? velocity.y : 0f;
         rigid.MovePosition(rigid.position + (new Vector2(velocity.x, velocity.y) * Time.fixedDeltaTime * speed));
+
+        if (facingRight && velocity.x < 0)
+        {
+            sprite.flipX = true;
+            facingRight = false;
+            Debug.Log("r");
+        }
+        else if (!facingRight && velocity.x > 0)
+        {
+            Debug.Log("l");
+            sprite.flipX = false;
+            facingRight = true;
+        }
     }
     public void AddForce(Vector2 value)
     {

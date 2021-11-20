@@ -268,7 +268,10 @@ public class Cloud : MonoBehaviour
         {
             if (player.Velocity.y <= 0 && GameManager.Main.GameState != GameState.LevelFinished)
             {
-                animator.SetTrigger("CloudSpring");
+                if (color != cloudColor.red)
+                    animator.SetTrigger("CloudSpring");
+                else
+                    animator.SetTrigger("CloudHighSpring");
                 player.SetYForce(addJumpForce);
                 enteredCloud = true;
             }
