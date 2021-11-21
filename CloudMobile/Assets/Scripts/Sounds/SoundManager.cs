@@ -14,6 +14,9 @@ public class SoundManager : MonoBehaviour
     [Range(0,1)]
     private float volume;
     public AudioClip actuallClip;
+    [SerializeField]
+    [Range(0, 1)]
+    private float volumeBackground;
 
     private List<AudioSource> allSFXsources = new List<AudioSource>();
 
@@ -69,7 +72,7 @@ public class SoundManager : MonoBehaviour
         background.clip = null;
         background.clip = clip;
         background.loop = loop;
-        background.volume = volume;
+        background.volume = volumeBackground;
         background.Play();
     }
 
@@ -85,7 +88,7 @@ public class SoundManager : MonoBehaviour
                 clip = resource.levelFinished;
                 break;
         }
-        PlayNewBackgorund(clip);
+        PlayNewBackgorund(clip, loop);
     }
 
     public void ChooseSound(SoundType type, bool loop = false)
