@@ -165,13 +165,13 @@ public class PlayerCharacter2D : MonoBehaviour
         velocity.y = YVelocityIsActive ? velocity.y : 0f;
         rigid.MovePosition(rigid.position + (new Vector2(velocity.x, velocity.y) * Time.fixedDeltaTime * speed));
 
-        if (facingRight && velocity.x < 0)
+        if (facingRight && velocity.x < -.15f)
         {
             sprite.flipX = true;
             facingRight = false;
             Debug.Log("r");
         }
-        else if (!facingRight && velocity.x > 0)
+        else if (!facingRight && velocity.x > .15f)
         {
             Debug.Log("l");
             sprite.flipX = false;

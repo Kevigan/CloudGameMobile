@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetSceneByName("StartBildschirm").isLoaded)
         {
             gameState = GameState.Menu;
+            SoundManager.Main.ChooseBackGroundMusic(BackGroundSound.StartMenuBackground, true);
         }
         else gameState = GameState.Playing;
     }
@@ -150,6 +151,7 @@ public class GameManager : MonoBehaviour
         SaveHighScore();
         ChangeGameState(GameState.Menu);
         SceneManager.LoadScene(0);
+        SoundManager.Main.ChooseBackGroundMusic(BackGroundSound.StartMenuBackground, true);
     }
     public void LoadScene(int i)
     {

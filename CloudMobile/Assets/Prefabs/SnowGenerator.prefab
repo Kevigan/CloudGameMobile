@@ -28,7 +28,6 @@ Transform:
   m_LocalPosition: {x: 17.9, y: 22.475409, z: -4.248924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4046805056413601207}
   - {fileID: 4046805058399779288}
   - {fileID: 4046805057306562160}
   - {fileID: 6969663791818749928}
@@ -47,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f439baba41f257a43b039c2a2d0530a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  psNormal: {fileID: 4046805056413601200}
+  psNormal: {fileID: 0}
   psLeft: {fileID: 4046805057306562167}
   psRight: {fileID: 4046805058399779295}
   stars: {fileID: 385526315529472267}
@@ -64,7 +63,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3013059606589315518, guid: 899dae22f051fc449abb8242df640c25, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3013059606589315518, guid: 899dae22f051fc449abb8242df640c25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -118,73 +117,6 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3013059606589315513, guid: 899dae22f051fc449abb8242df640c25, type: 3}
   m_PrefabInstance: {fileID: 1295253824609884110}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5167791539582641144
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8354116177535686166}
-    m_Modifications:
-    - target: {fileID: 9195942264338001482, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_Name
-      value: Snow Generator
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.802645
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -18.565409
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.2489238
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
---- !u!4 &4046805056413601207 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9195942264338001487, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-  m_PrefabInstance: {fileID: 5167791539582641144}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4046805056413601200 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9195942264338001480, guid: ab39bcfa0c35d944eb0bad446903641a, type: 3}
-  m_PrefabInstance: {fileID: 5167791539582641144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8487698754516592685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5612468985377362421, guid: 495ade54e576bde499daa4693fbe0d77, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5612468985377362421, guid: 495ade54e576bde499daa4693fbe0d77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -261,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1757973872322515997, guid: b41931ff1fb83ef48bc78a5337831757, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1757973872322515997, guid: b41931ff1fb83ef48bc78a5337831757, type: 3}
       propertyPath: m_LocalPosition.x

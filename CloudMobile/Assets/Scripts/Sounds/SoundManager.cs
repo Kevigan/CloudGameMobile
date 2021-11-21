@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         if (Main == null)
         {
             Main = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (Main != this)
         {
@@ -87,6 +88,9 @@ public class SoundManager : MonoBehaviour
             case BackGroundSound.levelFinished:
                 clip = resource.levelFinished;
                 break;
+            case BackGroundSound.StartMenuBackground:
+                clip = resource.StartMenuBackground;
+                break;
         }
         PlayNewBackgorund(clip, loop);
     }
@@ -125,5 +129,6 @@ public enum BackGroundSound
 {
     backGround,
     levelFinished,
+    StartMenuBackground
 
 }
